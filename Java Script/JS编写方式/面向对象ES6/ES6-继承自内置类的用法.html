@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class HYArray extends Array {
+            get lastItem() {
+              return this[this.length - 1] //获取最后一个元素
+            }
+            get firstItem() {
+                return this[0] //获取第一个元素
+            }
+        }
+        var arr = new HYArray(10, 20, 30)
+        console.log(arr);
+        console.log(arr.length);
+
+        //直接对Array进行扩展
+        Array.prototype.lastItem = function() {
+            return this[this.length - 1] //直接获取最后一个元素
+        }
+
+        var arr = new Array(10, 20, 30)
+        console.log(arr.__proto__ === Array.prototype);
+        console.log(arr.lastItem());
+        
+        </script>
+</body>
+</html>

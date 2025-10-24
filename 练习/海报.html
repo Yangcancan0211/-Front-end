@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大数据与创新团队招新海报</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a2980, #26d0ce);
+            padding: 20px;
+        }
+        
+        .poster {
+            width: 800px;
+            height: 1120px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+            padding: 40px;
+            display: grid;
+            grid-template-rows: auto 1fr auto auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .main-title {
+            font-size: 56px;
+            font-weight: 800;
+            color: #1a2980;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sub-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #26d0ce;
+            margin-bottom: 20px;
+        }
+        
+        .recruit {
+            font-size: 46px;
+            color: #ff6b6b;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin: 20px 0;
+            text-align: center;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .slogan {
+            font-size: 28px;
+            font-style: italic;
+            color: #555;
+            text-align: center;
+            margin: 30px 0;
+            padding: 15px;
+            border-top: 2px dashed #26d0ce;
+            border-bottom: 2px dashed #26d0ce;
+        }
+        
+        .contact {
+            text-align: center;
+            font-size: 30px;
+            color: #1a2980;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+        
+        .intro {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+            text-align: justify;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(38, 208, 206, 0.1);
+            border-radius: 10px;
+        }
+        
+        .domains {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+        
+        .domain {
+            background: linear-gradient(135deg, #1a2980, #26d0ce);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 18px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .info-section {
+            background: rgba(26, 41, 128, 0.08);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .info-title {
+            font-size: 22px;
+            color: #1a2980;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .info-content {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .qr-code {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            width: 180px;
+            height: 180px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .qr-code img {
+            width: 120px;
+            height: 120px;
+            background: #fff;
+            padding: 10px;
+        }
+        
+        .qr-text {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+            text-align: center;
+        }
+        
+        .decoration {
+            position: absolute;
+            opacity: 0.5;
+        }
+        
+        .circle1 {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a2980, #26d0ce);
+            top: -50px;
+            left: -50px;
+            opacity: 0.3;
+        }
+        
+        .circle2 {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b6b, #ff9e6b);
+            bottom: 100px;
+            left: 100px;
+            opacity: 0.2;
+        }
+        
+        .circle3 {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #26d0ce, #1a2980);
+            top: 200px;
+            right: -30px;
+            opacity: 0.3;
+        }
+        
+        .data-points {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        
+        .data-point {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #1a2980;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="decoration circle1"></div>
+        <div class="decoration circle2"></div>
+        <div class="decoration circle3"></div>
+        
+        <div class="data-points" id="dataPoints"></div>
+        
+        <div class="header">
+            <h1 class="main-title">大数据 智能</h1>
+            <h2 class="sub-title">与创新团队</h2>
+        </div>
+        
+        <div class="recruit">开始招新啦！！</div>
+        
+        <p class="slogan">用代码重塑未来，以智能点亮星辰</p>
+        
+        <div class="contact">联系我们</div>
+        
+        <p class="intro">
+            2018年诞生于数据科学与智能研究的沃土，我们是由学院数据科学与大数据技术专业教研室与智能与网络化系统研究中心共同颁发的破核团队！从最初深耕大数据技术，到如今覆盖深度学习、游戏开发、图形学、全栈开发等多元领域，我们始终站在技术浪潮之巅，打造「学术+实战」双引擎驱动的创新生态圈。
+        </p>
+        
+        <div class="domains">
+            <div class="domain">深度学习</div>
+            <div class="domain">游戏开发</div>
+            <div class="domain">前后端开发</div>
+        </div>
+        
+        <div class="contact">联系我们</div>
+        
+        <div class="info">
+            <div class="info-section">
+                <div class="info-title">QQ交流群</div>
+                <div class="info-content">944372022</div>
+            </div>
+            <div class="info-section">
+                <div class="info-title">团队地点</div>
+                <div class="info-content">明理楼C2007</div>
+            </div>
+        </div>
+        
+        <div class="qr-code">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://qq.com/944372022

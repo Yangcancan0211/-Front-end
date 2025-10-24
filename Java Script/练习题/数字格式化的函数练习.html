@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 封装函数对数字进行格式化 -->
+    <script>
+        var playCount1=12334 
+        var playCount2=1998786756
+        var playCount3=9876543210123
+        function formatCount(count){
+            var result=0
+            if(count>10_0000_0000){
+                result=Math.floor(count/1_0000_0000)+"亿"
+            }else if(count>1_0000){
+                result=Math.floor(count/1_0000)+"万"
+            }else{
+                result=count
+            }
+            return result
+        }
+        console.log(formatCount(playCount1));
+        console.log(formatCount(playCount2));
+        console.log(formatCount(playCount3));
+    </script>
+</body>
+</html>

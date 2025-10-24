@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //变量的声明
+        var currentTime="2024-06-10 10:00:00";
+        //同时声明多个变量
+        var name="张三", age=20, isMale=true;
+        //变量的使用
+        document.write("当前时间是："+currentTime);
+        console.log(name, age, isMale);
+    </script>
+    <script>
+        //变量的练习
+        var name="李四";
+        var age=22;
+        var height=1.75;
+        var weight=150;
+        var address="北京市朝阳区";
+        age=23;
+        document.write("<br>姓名："+name+"<br>年龄："+age+"<br>身高："+height+"米<br>体重："+weight+"斤<br>地址："+address);
+    </script>
+    //交换数字
+    <script>
+        var num1=10;
+        var num2=20;
+        var temp=num1;
+        num1=num2;
+        num2=temp;
+        //num1=num1+num2  num1=30 num2=20
+        //num2=num1-num2  num1=30 num2=10
+        //num1=num1-num2  num1=20 num2=10
+        document.write("<br>num1="+num1+"<br>num2="+num2);
+    </script>
+    //promat函数获取用户输入
+    <script>
+        var username=prompt("请输入用户名：");
+        var userage=prompt("请输入年龄：");
+        document.write("<br>用户名："+username+"<br>年龄："+userage);
+    </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table{
+      text-align: center;
+      border-collapse: collapse;
+      /* 取消单位格之间的距离，合并单元格 */
+    }
+    td,th{
+      border: 1px solid #333;
+      padding: 8px 16px;
+    }
+    table thead tr:nth-child(1){
+      color: red;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <!-- 跨行和跨列演示 -->
+  <table >
+    <tr>
+      <td>序号</td>
+      <td>代码</td>
+      <td>名称</td>
+      <td>相关链接</td>
+      <td>最新价</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>873169</td>
+      <td>七丰</td>
+      <td>股吧</td>
+      <td rowspan="2">23.32</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>300091</td>
+      <td>金通灵</td>
+      <td>股吧</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>300032</td>
+      <td>金龙</td>
+      <td colspan="2">股吧</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>688556</td>
+      <td>高测</td>
+      <td>股吧</td>
+      <td>10.73</td>
+    </tr>
+  </table>
+  <table>
+  <caption>热门股票</caption>
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>代码</th>
+        <th>名称</th>
+        <th>相关链接</th>
+        <th>最新价</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>873169</td>
+        <td>七丰</td>
+        <td>股吧</td>
+        <td>23.32</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>300091</td>
+        <td>金通灵</td>
+        <td>股吧</td>
+        <td>3.04</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>300032</td>
+        <td>金龙</td>
+        <td>股吧</td>
+        <td>5.92</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>688556</td>
+        <td>高测</td>
+        <td>股吧</td>
+        <td>10.73</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>其他</td>
+        <td>其他</td>
+        <td>其他</td>
+        <td>其他</td>
+        <td>其他</td>
+      </tr>
+    </tfoot>
+  </table>
+  <table >
+    <tr>
+      <th>序号</th>
+      <th>代码</th>
+      <th>名称</th>
+      <th>相关链接</th>
+      <th>最新价</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>873169</td>
+      <td>七丰</td>
+      <td>股吧</td>
+      <td>23.32</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>300091</td>
+      <td>金通灵</td>
+      <td>股吧</td>
+      <td>3.04</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>300032</td>
+      <td>金龙</td>
+      <td>股吧</td>
+      <td>5.92</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>688556</td>
+      <td>高测</td>
+      <td>股吧</td>
+      <td>10.73</td>
+    </tr>
+  </table>
+</body>
+</html>

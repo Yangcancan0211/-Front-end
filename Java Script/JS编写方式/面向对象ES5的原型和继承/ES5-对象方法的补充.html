@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./inheri.js"></script>
+    <script>
+        var obj = {
+            name : "张三",
+            age : 18,
+            height : 1.8
+        }
+        var info =createObject(obj)
+        info.address = "中国"
+        info.intro = "我是" + info.name + ", 我今年" + info.age + "岁, 我来自" + info.address
+
+        //1.hasOwnProperty(): 判断对象是否有指定的属性, 不包括原型链上的属性
+        console.log(info.hasOwnProperty("name")); //false
+        console.log(info.hasOwnProperty("age")); //false
+        console.log(info.hasOwnProperty("height")); //false
+        console.log(info.hasOwnProperty("address")); //true
+        console.log(info.hasOwnProperty("intro")); //true
+
+        //2.in操作符
+        console.log("name" in info);//true
+        console.log("age" in info);//true
+        //for in遍历不只是自己对象上的内容,也包括原型对象上的内容
+        for (var key in info){
+            console.log(key);
+        }
+        //3.instanceof操作符: 判断一个对象是否是一个类的实例
+        function Person() {}
+        function Student() {}
+        inherit(Student, Person)
+        //stu实例(insatance)对象
+        var stu = new Student()
+        console.log(stu instanceof Student);//true
+        console.log(stu instanceof Person);//true
+        console.log(stu instanceof Array);//false
+        console.log(stu instanceof Object);//true
+        //4.isPrototypeOf() : 判断一个对象是否是另一个对象的原型链上的对象
+        console.log(Student.prototype.isPrototypeOf(stu));//true
+        console.log(Person.prototype.isPrototypeOf(stu));//true
+        console.log(Array.prototype.isPrototypeOf(stu));//false
+        console.log(Object.prototype.isPrototypeOf(stu));//true
+    </script>
+</body>
+</html>

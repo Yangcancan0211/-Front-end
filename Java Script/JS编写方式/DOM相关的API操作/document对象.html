@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">hhhhhhh</div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <!-- 高级元素:table/form -->
+     <table>
+        <thead>
+             <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <th>why</th>
+            <th>18</th>
+            <th>男</th>
+        </tr> 
+         <tr>
+            <th>why</th>
+            <th>18</th>
+            <th>男</th>
+        </tr>
+        </tbody>
+     </table>
+     <form action="">
+        <input type="text" name="" id="">
+        <input type="password">
+        <input type="hobbies">
+        <select name="fruits" >
+            <option value="apple">apple</option>
+        </select>
+     </form>
+    <script>
+    var htmlE1=document.documentElement
+    var headE1=document.head
+    var doctype=document.doctype
+    //1.获取节点的导航
+    var bodyE1=document.body
+    //2.获取body的所有子节点
+    console.log(bodyE1.childNodes);
+    //获得第一个子节点
+    var bodyE1FirstChild=bodyE1.firstChild
+    //获取最后一个子节点
+    var bodyE1LastChild=bodyE1.lastChild
+    //获取父节点
+    var bodyE1ParentNode=bodyE1.parentNode
+    console.log(bodyE1FirstChild);
+    console.log(bodyE1LastChild);
+    console.log(bodyE1ParentNode);
+    //3.根据body元素去获取子元素(element)
+    console.log(bodyE1.children);
+    //获取第一个子元素
+    var bodyE1FirstElementChild=bodyE1.firstElementChild
+    //bodyE1.children[0]
+    console.log(bodyE1FirstElementChild);
+    //获取最后一个子元素
+    var bodyE1LastElementChild=bodyE1.lastElementChild
+    console.log(bodyE1LastElementChild);
+    //4.获取兄弟元素
+    var box=document.querySelector('.box')
+    //前兄弟元素
+    console.log(box.previousElementSibling);
+    //后兄弟元素
+    console.log(box.nextElementSibling);
+    //4.table元素的导航
+    var tableE1=document.body.firstElementChild
+    console.log(tableE1);
+    
+    </script>
+</body>
+</html>

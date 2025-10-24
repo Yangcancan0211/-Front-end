@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./21.less的兼容-变量-嵌套.css">
+</head>
+<body>
+    <!-- 兼容 
+    Less转化为css的语法
+        1.变量：@color:red;  color:@color;
+        2.嵌套：.box{ h1{ color:red; } }
+        3.混入：.mixin(){ color:red; } .box{ .mixin(); }
+        4.继承：.parent{ color:red; } .child:extend(.parent);
+        5.运算：width:100px/2;
+        6.函数：color:lighten(@color,20%); -->
+          <!-- <div class="box">
+            我是box
+          </div> -->
+          <div class="box">
+            <p class="pel">我是p元素</p>
+            <h1 class="hel">我是h1元素</h1>
+            <p>
+                我是一个段落
+                <a class="link" href="#">百度一下</a>
+            </p>
+          </div>
+         <ul class="item">
+            <li class="list">1</li>
+            <li class="list">2</li>
+            <li class="list">3</li>
+            <li class="list">4</li>
+            <li class="list">5</li>
+         </ul>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+    //1.创建工厂函数
+    function stu(name,age,height){
+      stu.name=name
+      stu.age=age
+      stu.height=height
+      stu.running=function() {
+        console.log(running);
+      }
+      return stu
+    }
+    //传入参数
+    var stu1=stu("why",18,1.88)
+    var stu2=stu("Tom",19,1.90)
+    var stu3=stu("Lisa",20,1.80)
+    //2.简化函数
+    function coder(name,age,height){
+      this.name=name
+      this.age=age
+      this.height=height
+      this.running=function() {
+        console.log(running);
+      }
+    }
+    var stu1=new coder("why",18,1.88)
+    var stu2=new coder("Tom",19,1.90)
+    var stu3=new coder("Lisa",20,1.80)
+    //3.创建一系列对象
+    //构造函数使用大驼峰
+    function Person() {
+
+    }
+    var obj1={}
+    var obj2= new Object()
+    var obj3=new Person()
+    //4.window
+    console.log(window);
+    function foo(){
+        console.log(window.console===console);//true
+        console.log(window.Object===Object);//true
+    }
+    foo()
+    //函数也是对象
+    //定义原始类型的变量
+     
+   </script>
+</body>
+</html>

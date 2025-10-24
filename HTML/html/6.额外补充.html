@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- 字符编码 在计算机上的字符必须转换成二进制数字 charset -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+   1.字符实体：<实体不能被解析 （1）以&开头 以；分号结束（2)常用于显示保留字符（被解析成html代码）和不可见字符(如不换行空格)（3）代替其他难以用标准键盘录入的字符       
+                     描述 名称 编号
+   2.常见字符实体：< 小于号 &lt &#60
+                  > 大于号 &gt &#62
+                    空格 &nbsp &#160
+     -->
+    <p>
+      哈哈哈哈哈哈哈，&nbsp;&lt额呵呵呵呵呵呵呵&gt,&nbsp;红红火火恍恍惚惚
+    </p>
+   <!--
+    URL VS URI
+    1. URL:统一资源定位符（网络地址） 域名在服务器中解析成ip地址 eg.daidu.com 解析-----&gt123.123.207.222
+    2. URI:统一资源标识符（标识web中逻辑或物理资源）
+    URL属于URI 但URI不一定是URL
+    -->
+    <!-- 
+     link元素（外部资源链接元素）规范了文档与外部资源的关系 属性：href（URL）,rel指定链接类型(icon站点图标 stylesheet:css样式)
+     1.通常在head元素中
+     2.链接样式表(css)
+     3.创建站点图表
+      -->
+     <!-- 进制
+      在二进制中，10表示2
+      在八进制中，10表示8、
+      在十六进制中，a表示10
+      十进制转其他进制：整除，取余数
+     -->
+      <!-- 
+     开发工具的补充：检查F12
+    调试字体大小：ctrl+ /ctrl加鼠标滚动
+      -->
+    <!-- 使用box-sizing：
+     添加border-sizing:border就会算在width和height里面
+     生效时的前提：有明确的设置宽度和高度
+     不用使用box-sizing的场景：1.块级盒子的嵌套 2.定位元素 3.flex布局
+      -->
+</body>
+</html>

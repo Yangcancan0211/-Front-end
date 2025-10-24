@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //算幂
+        function pow(a,n){
+            var result=1
+            for(var i=0;i<n;i++){
+               result*=a
+            }
+            return result
+        }
+        console.log(pow(3,2))
+        //递归
+        function pow1(b,m){
+            if(m==1) return b
+            return (b*pow1(b,m-1))
+        }
+        console.log(pow1(3,2));
+    </script>
+</body>
+</html>

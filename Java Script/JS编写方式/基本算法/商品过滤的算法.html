@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //实例:商品过滤的算法
+        var infos = [
+        { name:"商品1",price:100,discount:0.8 },
+        { name:"商品2",price:200,discount:0.9 },
+        { name:"商品3",price:200,discount:0.5 },
+        { name:"商品4",price:400,discount:0.7 },
+        { name:"商品5",price:200,discount:0.85 },
+        { name:"商品6",price:200,discount:0.92 },           
+        { name:"商品7",price:700,discount:0.68 },
+        { name:"商品8",price:200,discount:0.82 },
+        { name:"商品9",price:900,discount:0.75 },
+        { name:"商品10",price:1000,discount:0.95 }
+    ]
+       //过滤算法:filter 过滤出价格大于200的商品
+       var showInfo = infos.filter(function(item){
+        return item.price > 200
+       })
+       console.log(showInfo);
+
+       //实例:筛选朋友
+       var info = [
+        { name:"张三" , friend: ["cba", "abc" ,"def"]},
+        { name:"李四" , friend: ["cba", "aabc" ,"def"]},
+        { name:"王五" , friend: ["cbaa", "abc" ,"def"]},
+        { name:"赵六" , friend: ["cba", "abc" ,"deaf"]},
+       ]
+       var filters = ["cba", "abc" ]
+       //展示内容
+        var showInfo = info.filter(function(item){
+            var friends = item.friend
+            var isFlag = true
+            for (var filterItem of filters) {
+                if (!friends.includes(filterItem)) {
+                    isFlag = false
+                    break
+                }
+            }
+            return isFlag
+        })
+        console.log(showInfo);
+    </script>
+</body>
+</html>

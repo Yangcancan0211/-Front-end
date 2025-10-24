@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./2.style.css">
+  <!-- link元素用来引入资源 -->
+   <link rel="stylesheet" href="./4.index.css">
+  <style>
+    /* 选择器 内部样式表*/
+    /* 所有div的样式 */
+    /* div{ 
+      color: red;
+       font-size: 30px;
+       background-color: orange;
+     } */
+      /* 找到class（全局属性）为div-one的元素 */
+     .div-one{ 
+       color: red;/* 前景颜色 */
+       font-size: 30px;/* 文字大小 */
+       background-color: orange;/* 背景颜色 */
+     }
+  </style>
+</head>
+<body>
+  <h1  style="font-size: 100px;">我是标题</h1>
+  <div style="color: red; font-size: 50px;">我是div元素</div>
+  <span style="color: blue;">我是span元素</span>
+  <!-- 内联样式 -->
+   <div class="div-one">我也是div元素</div>
+   <!-- 内部样式表-->
+  <div class="title">我也是是div元素</div>
+  <!-- 外部样式表 -->
+  <h2 class="h2-one">我是h2元素</h2>
+   <p class="title">我是p元素</p>
+   <!-- 用import链接 -->
+</body>
+</html>

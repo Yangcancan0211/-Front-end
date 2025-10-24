@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body,ul,li,a{
+    padding: 0;
+    margin: 0;
+    }
+    ul,li,ol{
+      list-style: none;
+    }
+    ul>li{
+      margin: 16px;
+    }
+    ul>li>a:hover{
+    color: #f04142;
+    }
+    a{
+      text-decoration: none;
+      color: #333;
+    }
+    ul>li>a{
+      display: inline-block;
+    }
+    ul,li .content{
+      display: inline-block;
+    }
+    ul>li.ranking{
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      line-height: 24px;
+      font-weight: 700;
+      color: black;
+    }
+    .icon{
+      position: relative;
+      top: 2px;
+      left: 2px;
+      display: inline-block;
+      height: 16px;
+      width: 16px;
+    }
+    ul>li .hot{
+      background-image: url(../HTML/img/icon.svg);
+      background-size: cover;
+    }
+    ul>li:nth-child(1) .ranking{
+      color:red;
+    }
+  </style>
+  <!-- <style>
+    div>div:nth-child(4n+1){
+      color: #f04142;
+    }
+    div>div:nth-child(4n+2){
+      color: #000;
+    }
+    div>div:nth-child(4n+3){
+      color: antiquewhite;
+    }
+    div>div:nth-child(4n+4){
+      color: blue;
+    }
+    /* 前几个 */
+    div>div:nth-child(-n+5){
+      font-size: 20px;
+    }
+  </style> -->
+  <style>
+    /* 需求选中box中第三个元素 */
+    /* 不会生效 因为从前往后面数不是div元素 */
+    .box>div:nth-child(3){
+      color: red;
+      font-size: 20px;
+    }
+    /* 只会选中与之相符的元素 */
+    .box>div:nth-of-type(3){
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li class="item">
+      <a href="#">
+      <span class="ranking">1.</span>
+      <div class="content">四川拥有众多闻名遐迩的旅游胜地，比如巍峨雄浑的峨眉山和秀美绝伦的九寨沟。此外，四川还是一片物产丰饶的土地，盛产茶叶、竹子、烟草等农产品。</div>
+      <i class="icon hot"></i>
+      </a>
+    </li>
+  </ul>
+  <ul>
+    <li class="item">
+      <a href="#">
+      <span class="ranking">2.</span>
+      <div class="content">四川拥有众多闻名遐迩的旅游胜地，比如巍峨雄浑的峨眉山和秀美绝伦的九寨沟。此外，四川还是一片物产丰饶的土地，盛产茶叶、竹子、烟草等农产品。</div>
+      <i class="icon"></i>
+      </a>
+    </li>
+  </ul>
+  <ul>
+    <li class="item">
+      <a href="#">
+      <span class="ranking">3.</span>
+      <div class="content">四川拥有众多闻名遐迩的旅游胜地，比如巍峨雄浑的峨眉山和秀美绝伦的九寨沟。此外，四川还是一片物产丰饶的土地，盛产茶叶、竹子、烟草等农产品。</div>
+      <i class="icon"></i>
+      </a>
+    </li>
+  </ul>
+  <ul>
+    <li class="item">
+      <a href="#">
+      <span class="ranking">4.</span>
+      <div class="content">四川拥有众多闻名遐迩的旅游胜地，比如巍峨雄浑的峨眉山和秀美绝伦的九寨沟。此外，四川还是一片物产丰饶的土地，盛产茶叶、竹子、烟草等农产品。</div>
+      <i class="icon"></i>
+      </a>
+    </li>
+  </ul>
+  <ul>
+    <li class="item">
+      <a href="#">
+      <span class="ranking">5.</span>
+      <div class="content">四川拥有众多闻名遐迩的旅游胜地，比如巍峨雄浑的峨眉山和秀美绝伦的九寨沟。此外，四川还是一片物产丰饶的土地，盛产茶叶、竹子、烟草等农产品。</div>
+      <i class="icon hot"></i>
+      </a>
+    </li>
+  </ul>
+  <ul>
+    <li class="item">
+      <a href="#">
+      <span class="ranking">6.</span>
+      <div class="content">四川拥有众多闻名遐迩的旅游胜地，比如巍峨雄浑的峨眉山和秀美绝伦的九寨沟。此外，四川还是一片物产丰饶的土地，盛产茶叶、竹子、烟草等农产品。</div>
+      <i class="icon"></i>
+      </a>
+    </li>
+  </ul>
+ <!-- <div> 
+  <div>列表元素1</div>
+  <div>列表元素2</div>
+  <div>列表元素3</div>
+  <div>列表元素4</div>
+  <div>列表元素5</div>
+  <div>列表元素6</div>
+  <div>列表元素7</div>
+  <div>列表元素8</div>
+  <div>列表元素9</div>
+  <div>列表元素10</div>
+ </div> -->
+ <div class="box">
+  <span>我是元素1</span>
+  <span>我是元素2</span>
+  <span>我是元素3</span>
+  <div>我是元素1</div>
+  <div>我是元素2</div>
+  <div>我是元素3</div>
+  <div>我是元素4</div>
+  <div>我是元素5</div>
+</div>
+</body>
+</html>

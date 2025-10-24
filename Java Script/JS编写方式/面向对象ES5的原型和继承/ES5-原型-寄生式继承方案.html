@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //对象之间的继承
+        //默认的对象
+        var obj = {
+            name: "张三",
+            age:18
+        }
+        //原型式的继承
+        function createObject(obj) {
+            function F() {}
+            F.prototype = obj
+            return new F()
+        }
+        //寄生式函数
+        function createInfo(o, name, age, height){
+            var info = createObject(o)
+            info.name = name
+            info.age = age
+            info.height = height
+            return info
+        }
+        var info1 = createInfo(obj, "李四", 20, 1.8)
+        var info2 = createInfo(obj, "王五", 22, 1.75)
+        console.log(info1, info2);
+    </script>
+</body>
+</html>

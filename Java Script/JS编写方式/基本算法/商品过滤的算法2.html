@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <style>
+      .box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .box button{
+        height: 100px;
+        width: 100px;
+        margin: 10px;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .box button.active{
+        color: red;
+    }
+  </style>
+</head>
+<body>
+    <div class="box">
+        <button>green</button>
+        <button>blue</button>
+        <button>red</button>
+    </div>
+    <div class="list"></div>
+    <script>
+        //1.模拟大量数据
+        var students = [
+            {name: "小明" , color :["red","green"]},
+            {name: "小红" , color :["blue","green"]},
+            {name: "小刚" , color :["red","blue","green"]},
+            {name: "小绿" , color :["green","blue","black"]},
+        ]
+        //2.点击按钮,变选中
+        var boxEls=document.querySelector(".box")
+        var filter = []
+        var newStudent = [].concat(students)
+        for( var i=0;i<boxEls.children.length;i++){
+            var btnEl=boxEls.children[i]
+            btnEl.onclick=function(){
+                //修改active
+                this.classList.toggle("active")
+                //修改filter
+                if(this.classList.contains("active")){
+             filter.push(this.textContent.trim());
+                }else{
+                    var filterItem =this.textContent.trim()
+                    var index = filter.indexOf(filterItem)
+                    filter.splice(index,1)
+                }
+                newStudent.length=0
+                //过滤数据
+                for (var stu of students) {
+                   var isFlag = true
+                   for (var filterItem of filter) {
+                    if (!stu.color.includes(filterItem)) {
+                        isFlag = false
+                        break
+                    }
+                   }
+                   if (isFlag) {
+                    newStudent.push(stu)
+                   }
+                }
+                //展示数据   
+                showStudentList()
+            }
+        }
+          var listEl=document.querySelector(".list")
+            showStudentList()
+           function showStudentList(){
+                listEl.innerHTML=""
+                for (var i=0;i < newStudent.length;i++){
+                    var newStu = newStudent[i]
+                    var divEl= document.createElement("div")
+                    divEl.textContent = newStu.name
+                   listEl.append(divEl)
+                }
+
+           }
+    </script>
+</body>
+</html>

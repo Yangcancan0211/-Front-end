@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var names = ["张三","李四","王五","赵六","钱七"]
+        //slice: 截取数组的部分元素, 不修改原数组, 返回一个新数组
+         var newNames = [].slice.apply(name,[1,3])
+         console.log(names);
+         //splice: 删除数组的部分元素, 修改原数组, 返回被删除的元素组成的数组
+         names.splice(2,2)
+         console.log(names);
+    </script>
+</body>
+</html>

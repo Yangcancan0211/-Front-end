@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //定义函数
+        function foo() {
+            //name属性: 函数的名称, 可以通过函数名.name访问
+       console.log(foo.name);//foo
+        }
+        var bar =function(age,name){
+        }
+        console.log(bar.name);//bar
+        //自定义属性: 可以为函数添加自定义的属性, 用于存储额外的信息
+        foo.message = "Hello, World!";
+        console.log(foo.message);//Hello, World!
+        //length属性: 函数的形参个数, 可以通过函数名.length访问
+        function test() {}
+        test(111,222,333)
+        console.log(bar.length);//2
+        console.log(test.length);//0
+    </script>
+</body>
+</html>

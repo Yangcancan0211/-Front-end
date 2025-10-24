@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn">按钮1</button>
+    <button class="btn">按钮2</button>
+    <button class="btn">按钮3</button>
+    <button class="btn">按钮4</button>
+    <!-- 函数的回调 -->
+    <script>
+        function foo(fn){
+
+        }
+        function bar(){
+            console.log("bar函数被执行了");
+        }
+        //函数的回调:通过fn去调用bar函数
+        foo(bar)
+        //函数回调的实例
+        function request(url,callback){
+            console.log("根据URL向服务器发送网络请求");
+            console.log("需要花费较长时间拿到对应结果");//异部查找
+            var list=["Java","js"]
+            callback(list)
+        }
+        //传入的函数没有名字,称为匿名函数
+        request("url",function handleResult(res){
+            console.log("在handleResult中拿到结果:",res);
+        })
+    </script>
+    <!-- 立即执行函数 -->
+     <script>
+        //第一种写法:第一步先定义一个匿名函数
+        (function bar(){
+        console.log("bar函数立即执行");
+        })();
+        //第二步()用来调用函数
+        
+        //第二种写法 匿名函数
+           (function(fn){
+           console.log("匿名函数立即被执行");
+           }());
+
+        //应用场景一 立即函数的参数和返回值
+        var result=(function (name){
+            console.log("函数被立即执行",name);
+            return "hello world"
+        })("why")
+        console.log(result);
+
+        //应用场景二 用来监听对象的点击
+        //获取一个按钮
+        // //1.拿到html元素
+        // var btnE1=document.querySelector(".btn")
+        // console.log(btnE1);
+        // //监听对应按钮的点击
+        // btnE1.onclick=function(){
+        //     console.log("点击按钮1");
+        // }
+
+        //获取所有按钮的点击
+        var btnE1s=document.querySelectorAll(".btn")
+        for(var i=0;i<btnE1s.length;i++){
+            var btn=btnE1s[i];
+            (function(m){
+                btn.onclick=function(){
+                console.log(`按钮${m+1}发生了点击`)
+                }
+            })(i)
+        }
+        console.log(i);
+     </script>
+</body>
+</html>

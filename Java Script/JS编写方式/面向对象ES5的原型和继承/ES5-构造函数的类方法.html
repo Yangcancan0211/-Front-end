@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(name, age) {
+            this.name = name
+            this.age = age
+        }
+
+         Person.totalCounter = "70亿"
+
+         //添加Person原型上的方法也被称为 实例方法
+         Person.prototype.running = function() {
+            console.log(this.name + "running~");
+         }
+         Person.prototype.eating = function() {
+            console.log("eating");
+         }
+
+         //添加Person对象本身的方法称作类方法
+         var names= ["张三","李四","王五"]
+         //随机生成姓名和年龄
+         Person.randomPerson = function() {
+            var randomName = names[Math.floor(Math.random() * names.length)]
+            return new Person(randomName, Math.floor(Math.random() * 100))
+         }
+
+         //实例对象
+         var p1 = new Person("hhh", 10)
+         var p2 = new Person("sss", 90)
+         p1.running()
+
+         //没有实例对象的情况下 不能调用函数
+         var p =Person.randomPerson()
+         console.log(p);
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* .body{  */
+      /* font-size:0; */
+      /* 将间距变为0 */
+    /* } */
+    .box{
+      min-width: 200px;
+      max-width: 750px;
+      min-height: 500px;
+      max-height: 750px;
+      background-color: wheat;
+      margin: 0 auto;
+      border: 2px solid #000 ;
+      display: inline-block;
+      /* padding-top: 10px;
+      padding-bottom: 20px;
+      padding-right: 30px;
+      padding-left: 40px; */
+      padding: 100px;
+    }
+    .box2{
+      display: inline-block;
+      margin-left: 50px;
+      margin-top: 50px;
+      /* 宽度 */
+      border-top-width: 10px;
+      border-right-width: 20px;
+      border-bottom-width: 30px;
+      border-left-width: 40px;
+      /* 样式 */
+      border-top-style: dashed;
+      border-right-style: solid;
+      border-bottom-style:dotted;
+      border-left-style: groove;
+      /* 颜色 */
+      border-top-color: #000;
+      border-right-color: antiquewhite;
+      border-bottom-color:firebrick;
+      border-left-color: blue;
+    }
+    .box3{
+      margin-left: 50px;
+      margin-top: 30px;
+      display: inline-block;
+      border: 100px solid #000;
+    }
+    .box4{
+      display: inline-block;
+      margin: 10px;
+      padding: 10px;
+      border: 100px solid #000;
+      background-color: antiquewhite;
+    }
+    .content{
+      display: inline-block;
+      padding: 20px;
+      background-color: red;
+    }
+    .box5{
+      display: inline-block;
+      height: 300px;
+      width: 300px;
+      background-color: red;
+    }
+    .contenter{
+      height: 100px;
+      width: 100px;
+      background-color: green;
+      margin-left: 30px;
+      margin-top: 30px;
+    }
+    .box6{
+      height: 100px;
+      width: 100px;
+      background-color: #f00;
+      box-shadow: 5px 5px 10px 10px orange inset;
+    }
+    .box7{
+      font-size: 50px;
+      font-weight: 700px;
+      color: #000;
+      text-shadow:  2px 2px 4px #CE5937;;
+
+    }
+    </style>
+</head>
+<body>
+  <div class="box">我是div</div>
+  <div class="box2">我是box2</div>
+  <div class="box3">我是box3</div>
+  <div class="box4">我是box4</div>
+  <div class="box4">
+    <div class="content">content</div>
+    <!-- 嵌套盒子 -->
+  </div>
+  <div class="box5">
+    <div class="contenter"></div>
+  </div>
+  <div class="box6"></div>
+  <div class="box7">ENGLISH</div>
+</body>
+</html>

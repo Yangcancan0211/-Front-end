@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <form action="">
+        <input type="text">
+        <button type="submit">提交</button>
+        <button type="reset">重置</button>
+     </form>
+    <script>
+        var inputEl=document.querySelector("input")
+        //1.获取焦点
+        inputEl.onfocus=function(){
+            console.log("获取焦点");
+        }
+        //2.失去焦点
+        inputEl.onblur=function(){
+            console.log("失去焦点");
+        }
+        //3.内容发生改变,失去焦点才会触发
+        inputEl.onchange=function(){
+            console.log("内容发生改变");
+        }
+        //4.输入内容
+        inputEl.oninput=function(){
+            console.log("输入内容");
+        }
+        //5.提交表单
+        var formEl=document.querySelector("form")
+        formEl.onreset=function(event){
+            console.log("重置事件");
+            event.preventDefault()//阻止表单提交
+        }
+        //6.提交表单
+        formEl.onsubmit=function(event){
+            console.log("提交事件");
+            event.preventDefault()//阻止表单提交`
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+/* 可以通过@import引入其他的css资源 */
+@import url(./2.style.css);
+@import url(./4.text.css);
+/* div{
+    background-image:url();
+
+ */

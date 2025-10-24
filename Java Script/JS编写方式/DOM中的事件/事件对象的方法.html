@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <style>
+        .box{
+            display: flex;
+            width: 200px;
+            height: 200px;
+            background-color:orange;
+        }
+        .btn{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+     </style>
+</head>
+<body>
+    <a href="https://www.baidu.com">跳转百度</a>
+    <div class="box">
+       <span>
+         <button class="btn">按钮</button>
+       </span>
+    </div>
+    <script>
+        //阻止默认行为
+        var aEl=document.querySelector("a")
+        aEl.onclick=function(event){
+            alert("a元素发生了点击")
+            event.preventDefault()
+        }
+        //阻止事件的冒泡
+        var btnEl=document.querySelector(".btn")
+        var spanEl=document.querySelector("span")
+        var divEl=document.querySelector(".box")
+       divEl.addEventListener("click",function(){
+            console.log("div元素发生了点击")
+        })
+        spanEl.addEventListener("click",function(){
+            console.log("span元素发生了点击")
+        })
+        btnEl.addEventListener("click",function(event){
+            console.log("按钮元素发生了点击")
+            event.stopPropagation()
+        })
+    </script>
+</body>
+</html>

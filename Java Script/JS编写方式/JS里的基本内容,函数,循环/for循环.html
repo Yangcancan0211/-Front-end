@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.打印十次hello world
+        for(var i=0;i<10;i++){
+            console.log("hello world");
+        }
+        //打印0~99数字
+        for(var i=0;i<100;i++){
+            console.log(i);
+        }
+        //计算0~99d数字和
+        var sum=0
+        for(var i=0;i<100;i++){
+            sum+=i
+        }
+        console.log(sum);
+        //计算0~99的奇数和
+        var sum1=0;
+        for(var i=0;i<100;i++){
+            if(i%2!=0){
+                sum1+=i
+            }
+        }
+        console.log(sum1);
+        //计算吗0~99的偶数和
+        var sum2=0;
+        for(var i=0;i<100;i++){
+            if(i%2==0){
+                sum2+=i
+            }
+        }
+        console.log(sum2);
+        //循环遍历
+        var name=["张三","李四","王五","赵六"]
+        for(var i=0;i<4;i++){
+            if(name[i]=="王五"){
+                console.log(i+"找到了王五");
+                break;//结束循环
+            }
+        }
+    </script>
+</body>
+</html>

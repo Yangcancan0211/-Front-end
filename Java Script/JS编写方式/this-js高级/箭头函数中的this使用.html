@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.普通函数中是有this的标识符
+        function foo() {
+            console.log("foo",this);
+        }
+        foo();
+        foo.apply("aaa")
+        //2.箭头函数中没有this的标识符
+        var bar = () => {
+            console.log("bar:",this);
+        }
+        bar();
+        console.log(message);
+        //3.this的查找机制
+        var obj = {
+            name:("obj"),
+            foo: () => {
+        var baz = () => {
+            console.log("baz",this);
+        }
+        return baz();
+            }
+        }
+        //现在自己的作业域中没有this,就去上一级作用域中查找,this指向window
+        var fn = boj.foo();
+        fn.apply("bbb")
+    </script>
+</body>
+</html>

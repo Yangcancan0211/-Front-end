@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    a{
+      text-decoration: none;
+      color: #333;
+    }
+  .item{
+    width: 140px;
+    margin: 0 auto;
+  }
+  /* 将图片下面多出来的区域去除 */
+  .item .top img{
+    vertical-align: top;
+  }
+  .item .top{
+    position: relative;
+  }
+  .item .top .cover{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../HTML/img/music-sprite-01.png);
+    background-position: 0 0;
+    cursor: pointer;
+  }
+  .item .bottom{
+    /* 单行显示省略号 */
+    display: block;
+    font-size: 14px;
+    margin-top: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .item .bottom:hover{
+    text-decoration: underline;
+  }
+  .item .top .info{
+   position: absolute;
+   right: 0;
+    bottom: 0;
+    left: 0;
+    height: 27px;
+    line-height: 27px;
+    padding-left: 10px;
+    color: #ccc;
+    background-image: url(../HTML/img/music-sprite-01.png);
+    background-position: 0 -537px;
+  }
+  .item .top .info .icon{
+    position: relative;
+    top: 1px;
+    width: 14px;
+    height:11px;
+   display: inline-block;
+   background-image: url(../HTML/img/music-sprite-02.png);
+    background-position: 0 -24px;
+  }
+  .item .top .info .count{
+    font-size: 12px;
+  }
+  .item .top .info .play{
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    width: 16px;
+    height: 17px;
+    background: url(../HTML/img/music-sprite-02.png) 0 0;
+    cursor: pointer;
+  }
+  .author{
+    color: #666;
+   font-size: 12px;
+  }
+  </style>
+</head>
+<body>
+ <div class="item">
+ <div class="top">
+  <img src="../HTML/img/网易云.png" alt="">
+  <div class="cover"></div>
+    <a class="cover" href="https://music.163.com/#/playlist?id=13032410131"></a>
+  <div class="info">
+    <i class="icon"></i>
+    <span class="count">15万</span>
+    <i class="play"></i>
+  </div>
+ </div>
+ <a class="bottom" href="https://music.163.com/#/playlist?id=13032410131">
+  『欧美R&B』如果忧郁是种天赋
+ </a>
+ <div class="author">
+  by 只是长胖Zzz
+ </div>
+ </div>
+</body>
+</html>

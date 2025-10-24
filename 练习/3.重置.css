@@ -1,0 +1,19 @@
+body,p,h3{
+  margin: 0;
+  padding: 0;
+}
+body{
+  background-color: #f5f5f5;
+  font: 12px;
+}
+h3{
+  font-size: 400;
+}
+/* a的重置 */
+a{
+  text-decoration: none;
+  color: black;
+  width: 104px;
+  height: 84px;
+  left: 12px;
+}

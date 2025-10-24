@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 公共的区域 */
+    .content{
+      width: 1190px;
+      margin: 0 auto;
+      background-color: orange;
+      height: 800px;
+    }
+    /* 布局样式 */
+      .item{
+      width: 230px;
+      height: 322px;
+      background-color: aliceblue;
+      float: left;
+      margin-right: 10px;
+    } 
+    /* 有可能存在兼容性问题 */
+    /* .item:last-child(5n){
+      margin-right: 0;
+    } */
+     /* 不存在兼容性问题，但很麻烦 */
+     /* .item.last-item{
+      margin-right: 0;
+     } */
+      /* 京东的方法
+      .item{
+      width: 230px;
+      height: 322px;
+      background-color: aliceblue;
+      float: left;
+      margin:5px 5px;
+    }
+      .box{
+       margin: 0 -5px;
+      } */
+       /* 最优方法 */
+       .box{
+        margin-right: -10px;
+      } 
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="box">
+    <div class="item item1">1</div>
+    <div class="item item2">2</div>
+    <div class="item item3">3</div>
+    <div class="item item4">4</div>
+    <div class="item item5">5</div>
+    </div>
+  </div>
+</body>
+</html>

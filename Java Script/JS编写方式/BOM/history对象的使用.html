@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>修改history</button>
+    <button class="back">返回上一级</button>
+    <script>
+        //history对应的属性
+        console.log(history.length);
+        console.log(history.state);
+        //修改history
+        var btnEl=document.querySelector("button")
+        btnEl.onclick=function(){
+            history.pushState({name:"张三"},null,"?name=张三")
+        }
+        //返回上一级
+        var backEl=document.querySelector(".back")
+        backEl.onclick=function(){
+            history.back()
+            history.go(-1)
+        }
+    </script>
+</body>
+</html>

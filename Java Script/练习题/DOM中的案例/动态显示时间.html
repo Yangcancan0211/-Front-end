@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="time"></h1>
+    <script>
+        //封装工具函数 0填充
+        function padLeft(content,count=2,padStr="0"){
+            count=count||2
+            padStr=padStr||"0"
+            return content.toString().padStart(count,padStr)
+        }
+        //获取时间元素
+    var timeEl=document.querySelector(".time")
+    //获取具体的时间并进行格式化
+    setInterval(function(){
+    var date=new Date()
+    var year=date.getFullYear()
+    var month=padLeft(date.getMonth()+1)
+    var day=padLeft(date.getDate())
+    var hour=padLeft(date.getHours())
+    var minute=padLeft(date.getMinutes())
+    var second=padLeft(date.getSeconds())
+    //将时间放在timeEl中
+    timeEl.textContent=year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second
+    },1000)
+    //0填充
+    // var str="1214"
+    // console.log(str.padStart(4,"0"));
+    </script>
+</body>
+</html>

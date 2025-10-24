@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 500px;
+            height: 200px;
+            border-color: red;
+            background-color: orange;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        风景描写优美的语段，仿领人走进了一个梦幻般的世界。 
+        1、 天空有如洁白大理石，云朵像细薄柳絮般从天而降。 
+        2、 山峦起伏，绿树成荫，这片区域好像一个恍如仙境的地方。 
+        3、 静谧的湖泊映照着山顶，令人着迷的美景，仿佛仙境一般。
+        4、 清新的空气中弥漫着花朵的香气，让人不由地陶醉。 
+        5、 橘黄色的晚霞点缀着蓝色的天空，形成了一道宛如人间仙境的[&风景线。 
+        6、 横卧天空的云朵软绵入手，仿佛只消伸手就能捧住。
+    </div>
+    <button class="scroll-btn">
+        滚动到顶部
+    </button>
+    <script>
+        var boxEl=document.querySelector(".box")
+        var boxStyle=getComputedStyle(boxEl)
+        //获取样式,clientWidth/clientHeight:元素内容区域的宽度/高度,不包含内边距,边框,滚动条
+        console.log(boxEl.clientWidth,boxEl.clientHeight);
+        //完整的宽度/高度,包含内边距,边框,滚动条
+        console.log(boxEl.offsetWidth,boxEl.offsetHeight);
+        //元素内容区域的宽度/高度,包含内边距,边框,滚动条,超出部分的宽度/高度
+        console.log(boxEl.scrollWidth,boxEl.scrollHeight);
+        //获取元素的位置信息
+        console.log(boxEl.getBoundingClientRect());
+        //获取元素内容的宽度/高度,包含内边距,边框,滚动条,超出部分的宽度/高度
+        console.log(window.outerWidth,window.outerHeight);
+        //window的滚动区域
+        window.onclick=function(){
+        console.log(window.scrollX,window.scrollY);
+        }
+        window.onscroll=function(){
+            console.log(window.scrollY);
+        }
+        //点击按钮后滚动到某个位置
+        var scorllBtnEl=document.querySelector(".scroll-btn")
+        scorllBtnEl.onclick=function(){
+            window.scrollTo(0,30)
+            console.log(window.scrollX,window.scrollY);
+        }
+    </script>
+</body>
+</html>

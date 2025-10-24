@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //求和函数
+        function sum(num1,num2){
+            var result=num1+num2
+            console.log(`${result}`);
+        }
+        sum(10,20)
+        sum(-100,200)
+        // return 结束函数的执行，并且可以返回一个值
+        function foo(name1,name2){
+            var res=name1+name2
+            return res
+        }
+        //求矩形面积
+       console.log(foo("张三","李四")); 
+       function area(width,height){
+        return width*height
+       }
+       var Area=area(10,20)
+       console.log(Area);
+       //求圆面积
+        function circleArea(radius){
+            return Math.PI*radius*radius
+        }
+        var cArea=circleArea(10)
+        console.log(cArea);
+        //求1~n的和
+        function sumN(n){
+            var sum=0
+            for(var i=1;i<=n;i++){
+            sum+=i
+            }
+            return sum
+        }
+        var sumNResult=sumN(100)
+        console.log(sumNResult);
+    </script>
+</body>
+</html>

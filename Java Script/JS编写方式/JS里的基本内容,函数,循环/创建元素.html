@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 创建元素 -->
+     <!-- document.write()方法:向文档写入内容 -->
+     <div class="box">
+        我是box
+        <span></span>
+     </div>
+     <button class="btn">
+        移除container
+     </button>
+     <button class="clone-btn">
+        克隆container
+     </button>
+     <div class="container">
+        <h1>我是container</h>
+        <p>我是container的段落</p>
+     </div>
+     <script>
+        var boxEl=document.querySelector(".box")
+        console.log(boxEl);
+        // setTimeout(function(){
+        //通过innerHtml(不推荐)
+        //     boxEl.innerHTML="<h2>我是h2</h2>"
+        //     console.log(boxEl.innerHTML);
+        // },2000)
+       //真实创建一个Dom对象
+       var h2El=document.createElement("h2")
+       h2El.className="我是h2"
+       h2El.classList.add("active")
+       h2El.textContent="我是标题"
+       //将元素插入box
+    //    boxEl.appendChild(h2El)
+    //    boxEl.before(h2El)
+    //    boxEl.after(h2El)
+    //    boxEl.replaceWith(h2El)
+    //    boxEl.prepend(h2El)
+    var spanEl=boxEl.querySelector("span")
+       spanEl.after(h2El)
+       //移除container
+    var containerEl=document.querySelector(".container")
+    var removeBtn=document.querySelector(".btn")
+    removeBtn.onclick=function(){
+        containerEl.remove()
+    }
+    //克隆container
+    var cloneContainerEl=containerEl.querySelector(".clone-btn")
+      cloneContainerEl.onclick=function(){
+        var newNode=containerEl.cloneNode(true)
+        document.body.appendChild(newNode)
+      }
+     </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <script>
+        //对每一个按钮进行监听
+        var btnEls=document.querySelectorAll("button")
+        for(var i=0;i<btnEls.length;i++){
+             debugger
+            var btnItemEl=btnEls[i]
+            btnItemEl.index=i
+             debugger
+            btnItemEl.onclick=function(){
+                //1.直接获取当前点击的按钮
+                // console.log(this);
+                //2.通过索引获取当前点击的按钮
+                 console.log(btnEls[this.index]);
+            }
+        }
+    </script>
+</body> 
+    </html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Number类型
+        var num=123
+        //integer:整数
+        console.log(Number.MAX_SAFE_INTEGER);
+        console.log(Number.MIN_SAFE_INTEGER);
+        //Number本身的属性
+        console.log(Number.MAX_VALUE);
+        console.log(Number.MIN_VALUE);
+        //对象的方法
+        //toString
+        console.log(num.toString(),typeof num.toString());
+        console.log(num.toString(2));//转成二进制
+        console.log(num.toString(8));//转成八进制
+        console.log(num.toString(16));//转成十六进制
+        console.log(num.toFixed(5));//保留五位小数
+        console.log(Number.parseFloat(num));//转成浮点数类型
+    </script>
+    <script>
+        //Math类型
+        var number=3.14
+        //向下取整
+        console.log(Math.floor(number));
+        //向上取整
+        console.log(Math.ceil(number));
+        //四舍五入
+        console.log(Math.round(number));
+        //5的3次方
+        console.log(Math.pow(5,3));
+        //生成5~50随机数
+        var randomNumber=Math.floor(Math.random()*(50-5+1))+5
+        console.log(randomNumber);
+    </script>
+    <script>
+        //字符串类型
+        var message="Hello world"
+        //获取字符串长度
+        console.log(message.length);
+        //获取第四位的字符
+        console.log(message[4]);
+        console.log(message.charAt(3));
+        //字符串的遍历
+        //普通for遍历
+        for(var i=0;i<message.length;i++){
+            console.log(message.charAt(i));
+        }
+        //for of遍历
+        for (var char of message){
+            console.log(message);
+        }
+        //字符串变成大写
+        var message1=message.toUpperCase()
+        console.log(message1);
+        //字符串变成小写
+        var message2=message.toLowerCase()
+        console.log(message2);
+        //判断一个字符串是否包含另一个字符串
+        var info="My name is why"
+        var name="why"
+        //indexOf
+        var index=info.indexOf(name)
+        console.log(index);
+        //includes
+        if(info.includes(name)){
+            console.log("包含");
+        }
+        //startWith,是否以xxx开头
+        if(info.startsWith("My")){
+            console.log("开头");
+        }
+        //endsWith
+        console.log(info.endsWith("why"));
+        //获取子字符串
+        //slice
+        console.log(info.slice(1,6));
+        //substring
+        console.log(info.substring(1,6));
+        //subst
+        console.log(info.substr(1,5));
+        //拼接字符串
+        var str1="Hello"
+        var str2="World"
+        var str3="!"
+        console.log(str1+str2+str3);
+        var newString1=str1.concat(str2).concat(str3)
+        var newString2=str1.concat(str2,str3,"abc","123")
+        console.log(newString1);
+        console.log(newString2);
+        //删掉首尾空格
+        console.log("     what    sbc   ".trim());
+        //字符串的切割
+        var info1="abc-123-cba-111"
+        var items=info1.split("-")
+        console.log(items);
+        var newMessage=items.join("*")
+        console.log(newMessage);
+    </script>
+</body>
+</html>

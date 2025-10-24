@@ -1,0 +1,23 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "7009036",
+      "name": "video",
+      "font_class": "video",
+      "unicode": "e73b",
+      "unicode_decimal": 59195
+    },
+    {
+      "icon_id": "8106252",
+      "name": "music",
+      "font_class": "music",
+      "unicode": "e69f",
+      "unicode_decimal": 59039
+    }
+  ]
+}

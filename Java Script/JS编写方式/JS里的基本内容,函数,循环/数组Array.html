@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //创建数组的方式一
+        var names=["why","Tom","Amy"]
+        //访问元素
+        console.log(names[1]);
+        console.log(names[names.length-1]);
+        console.log(names.at(-1));
+        var products=[
+            {name:"鼠标",price:89},
+            {name:"键盘",price:109},
+            {name:"电脑",price:889}
+        ]
+        //创建数组的方式二:类Array
+          var arr=new Array()
+          var arr1=new Array("111","abc")
+          console.log(arr,arr1);
+          //新增元素(了解)
+          arr1[2]="cba"
+          arr1[6]="222"
+          console.log(arr1);
+          //删除元素(了解)
+          delete arr1[2]
+          console.log(arr1);
+         //尾部添加元素
+         arr1.push("333","fff","bbb")
+         console.log(arr1);
+         //尾部删除元素
+         arr1.pop()
+         arr1.pop()
+         console.log(arr1);
+         //在任意位置添加/删除/替换元素
+         arr1.splice(1,2)//删除
+         console.log(arr1);
+         arr1.splice(1,0,"qqq")//添加
+         console.log(arr1);
+         arr1.splice(1,2,"www")//替换
+         console.log(arr1);
+         //数组的遍历
+         //普通for
+         for(var i=0;i<arr1.length;i++){
+            console.log(arr1[i]);
+         }
+         //for in
+         for(var index in arr1){
+            console.log(index,arr1[index]);
+         }
+         //for of
+         for(var info of arr1){
+            console.log(info);
+         }
+         //splice
+         var names=["aaa","dddd","ddd","ttt","rrrr","ereee"]
+         var result=names.slice(2,4);
+         console.log(result);
+         //concat 拼接数组
+         var name1=["wwww","tttt","iii"]
+         var name2=["eeee","nnn","1211"]
+         var result1=names.concat(name1,name2)
+         console.log(result1);
+         //增加元素
+        console.log(names.join("-"));
+        //查找元素
+        //1.普通数组
+        console.log(names.indexOf("aa"));//未找到返回-1
+        //2.数组中存放的是对象类型
+        var students = [
+            {id:100,name:"why",age:18},
+            {id:101,name:"fwhy",age:20},
+            {id:102,name:"whhy",age:19},
+            {id:103,name:"wfhy",age:10}
+            ]
+            //查找x学号为101的学生
+            for(var i=0;i<students.length;i++){
+                if(students[i].id==101){
+                    console.log(students[i]);
+                    break;
+                }
+            }
+            //find方法
+            var stu = students.find(function(item){
+                if(item.id==101)  return true
+            })
+            console.log(stu);
+            //手动建立ForEach函数
+            //方法一
+            students.hyForEach=function(fn) {
+                for(var i=0;i<this.length;i++){
+                    fn(this[i],i,this)
+                }
+            }
+            students.hyForEach(function(item,index,names){
+                console.log("--------",item,index,names);
+            })
+            //方法二(掌握)本质是回调函数
+            function hyForEach(fn){
+                for(var i=0;i<students.length;i++){
+                    fn(students[i],i,names)
+                }
+            }
+              hyForEach(function(item,index,names){
+                console.log("--------",item,index,names);
+            })
+            //手动建立find函数
+           Array.prototype.hyFind = function(fn) {
+                      var item
+              for(var i = 0; i < this.length; i++) {
+                var isFlag = fn(this[i], i, this)
+                        if(isFlag) {
+                    item = this[i]
+                     break
+             }
+         }
+                return item
+              }
+             var findStu = students.hyFind(function(item, index, arr) {
+                    return item.id === 101     
+                })
+            console.log(findStu);
+            //includes方法
+            var name3=["nba","cba","aaa"]
+            console.log(name3.includes("aaa"));
+            //findIndex查找索引
+            var findIndex=name3.findIndex(function(item,index,arr){
+                     return item==="nba"
+            })
+            console.log(findIndex);
+            //排序
+            var num=[1,2,423,5,75,7,754,8,90]
+            num.sort(function(item1,item2){
+                return item1-item2
+            })
+           console.log(num);
+           console.log(num.reverse());
+           //复杂类型
+          var newStudents= students.sort(function(item1,item2){
+            return item1.age-item2.age
+           })
+           console.log(newStudents);
+        </script>
+</body>
+</html>

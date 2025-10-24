@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 700px;
+      background-color: black;
+      color:aliceblue;
+    }
+    .box1{
+      width: 600px;
+      background-color:grey;
+      color:black;
+    }
+    ::first-line{
+      font-size: 30px;
+      color: antiquewhite;
+    }
+    .box::first-letter{
+      font-size: 50px;
+      color: white;
+    }
+    .box1::before{
+    content: "321";
+    }
+    /* 调整位置 */
+    .box1::after{
+      content:" ";
+      position: relative;
+      left:10px;
+      top:3px;
+      /* 设置图标 */
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background-color: #000;
+    }
+    /* 继承性 */
+    .box2{
+      font-size: 2em;
+      border:2px solid purple ;
+    }
+    /* 层叠性 */
+  </style>
+</head>
+<body>
+  <div class="box">
+    赵武灵王曾进行军事改革，胡服骑射，大败林胡、楼烦的入侵，建立了云中、雁门、代郡。后来，李牧奉命常驻雁门，防备匈奴。为免除匈奴对赵国边民的袭扰，使匈奴数岁无所得，而赵军则兵强马壮，愿为一战。“大破匈奴十余万骑。”其后十余年，匈奴不敢寇赵。后人称李牧为“奇才”，并在雁门关建“靖边寺”，纪念其戍边保民的战功。秦始皇统一六国后，派遣大将蒙恬率兵三十万，从雁门出塞，“北击胡，悉收河南之地”（即河套地区），把匈奴赶到阴山以北，并且修筑了万里长城。
+  </div>
+  <div class="box1">
+    汉武帝继位后，面对匈奴不断猖狂的南犯，着手反击。元光五年（前130），汉武帝下诏发卒整修雁门关。汉朝名将卫青、霍去病、李广等都曾驰骋在雁门古塞内外，多次大败匈奴，立下汗马功劳。“猿臂将军”李广在做代郡、雁门、云中太守时，先后与匈奴交战数十次，被匈奴称为“飞将军”。
+  </div>
+  <div class="box2">
+    我是div元素
+    <p>
+      我是p元素
+    </p>
+    <span>
+      我是span元素
+    </span>
+  </div>
+</body>
+</html>

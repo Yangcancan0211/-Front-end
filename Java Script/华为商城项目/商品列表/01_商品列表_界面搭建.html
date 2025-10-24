@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <link rel="stylesheet" href="./css/reset.css">
+   <link rel="stylesheet" href="./css/common.css">
+   <style>
+    .crumbs {
+        height: 63px;
+        line-height: 63px;
+        font-size: 12px;
+    }
+    .crumbs .item:last-child {
+        color:  #000;
+    }
+    .operation {
+    background-color:  #fff;
+    padding: 0 24px;
+    }
+    .operation > .row {
+        display: flex;
+    }
+    .operation > .row .item {
+        width: 104px;
+        height: 48px;
+        line-height: 48px;
+        font-size: 12px;
+        color: #000;
+    }
+        .operation > .row .item:first-child {
+            color: #666;
+            cursor: auto;
+        }
+        .operation > .row .item.active {
+            color: red;
+        }
+        .product {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: space-between;
+        }
+        .product > .item {
+            width: 291px;
+            height: 350px;
+            background-color: #fff;
+            margin-bottom: 12px;
+        }
+        .product > .item a{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .product > .item .album{
+            height: 200px;
+            width: 200px;
+            margin:30px 20px 0 0;
+        }
+        .product > .item .name{
+            font-weight: 700;
+            color: #000;
+        }
+        .product > .item .discount{
+            margin: 12px 0;
+            color: #666;
+        }
+        .product > .item .price{
+            font-weight: 700;
+            font-size: 16px;
+            color: red;
+        }
+        .product > .item .service{
+            display: flex;
+            justify-content: center;
+            margin: 5px 3px 0 0;
+        }
+        .product > .item .service .tip{
+            margin: 0 3px;
+            padding: 0 3px;
+            font-size: 12px;
+            border: 1px solid red;
+            border-radius: 3px;
+            color: red;
+        }
+   </style>
+</head>
+<body>
+    <!-- 商品展示 -->
+      <div class="wrapper">
+        <!-- 面包屑导航 -->
+        <div class="crumbs">
+        <span class="item">首页</span>
+        <span>&gt;</span>
+        <span class="item">笔记本</span>
+        </div>
+      <!-- 对内容的操作-->
+       <div class="operation">
+        <ul class="row category">
+            <li class="item">分类: </li>
+            <li class="item">笔记本</li>
+            <li class="item">台式机</li>
+            <li class="item">智慧屏</li>
+        </ul> 
+        <ul class="row discounty">
+            <li class="item">服务优惠: </li>
+            <li class="item active">仅看有货</li>
+            <li class="item">分期免息</li>
+            <li class="item">优惠商品</li>
+        </ul>
+         <ul class="row sort">
+            <li class="item">排序: </li>
+            <li class="item active">综合</li>
+            <li class="item">最新</li>
+            <li class="item">评论数</li>
+            <li class="item">价格</li>
+
+         </ul>
+       </div>
+        <!-- 商品列表 -->
+         <ul class="product">
+            <li class="item">
+                <a href="#">
+                    <img class="album" src="./img/product_01.png" alt="">
+                    <div class="name">HUAWEI MateBook Fold 非凡大师</div>
+                    <div class="discount">超轻薄折叠电脑|18英寸双层OLED显示屏</div>
+                    <div class="service">
+                        <span class="tip">赠品</span>
+                        <span class="tip">12期0分期利息</span>
+                    </div>
+                           <div class="price">¥ 24999</div>
+                </a>
+            </li>
+            <li class="item"></li>
+            <li class="item"></li>
+            <li class="item"></li>
+            <li class="item"></li>
+            <li class="item"></li>
+            <li class="item"></li>
+            <li class="item"></li>
+         </ul>
+          </div>
+</body>
+</html>

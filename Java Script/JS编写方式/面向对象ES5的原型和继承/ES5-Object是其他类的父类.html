@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./inheri.js"></script>
+    <script>
+    function Person() {}
+    function Student() {}
+    function Teacher() {}
+    inherit(Student, Person)
+    inherit(Teacher, Person)
+    console.log(Person.prototype.__proto__ === Object.prototype);//true
+    //Object是所有对象的父类
+    Object.prototype.message = "hhhh"
+    var stu = new Student()
+    console.log(stu.message);//hhhh
+    //Object上本身就存放着方法
+    console.log(Object.prototype);
+    console.log(stu.toString());
+    //函数的对象也是最终继承于Object
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       var randomNumber= Math.floor(Math.random()*100)//随机生成0-99之间的数字
+        for(var i=0;i<7;i++){
+            var number=Number(prompt("请输入一个数字:"))
+            if(randomNumber>number){
+                alert("猜小了");
+            }else if(randomNumber<number){
+                alert("猜大了");
+        }else{
+            alert("猜对了");
+            break;
+        }
+        if(i==6){
+            alert("游戏结束，正确数字是"+randomNumber);
+        }
+    }
+    </script>
+</body>
+</html>

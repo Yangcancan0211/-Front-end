@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Number类型
+        var age=18
+        var height=1.75+0.15
+        console.log(age,height)
+        //打印数据类型
+        console.log(typeof age,typeof height)
+        //数字表达的范围
+        var max=Number.MAX_VALUE
+        var min=Number.MIN_VALUE    
+        console.log(max,min);
+    </script>
+    <script>
+        //String类型
+        var name="张三"
+        var address='北京市朝阳区'
+        var info='我叫"张三"，住在北京市朝阳区'
+        console.log(name,address,info);
+        console.log(typeof name,typeof address,typeof info);
+        //字符串的方法
+        console.log(name.length);//字符串的长度
+        console.log(name.charAt(1));//获取指定位置的字符
+        console.log(name.indexOf("三"));//查找指定字符的位置
+        console.log(name.toUpperCase());//转换为大写
+        console.log(name.toLowerCase());//转换为小写
+        console.log(name.concat("，你好"));//字符串拼接
+        console.log(name.substring(0,1));//截取字符串
+        console.log(name.split(""));//将字符串转换为数组
+        console.log(name.replace("张三","李四"));//替换字符串
+        console.log(name.trim());//去除字符串两端的空格
+        console.log(name.repeat(3));//重复字符串
+        console.log(name.startsWith("张"));//判断字符串是否以指定字符开头
+        console.log(name.endsWith("三"));//判断字符串是否以指定字符结尾 
+        console.log(name.includes("三"));//判断字符串是否包含指定字符
+        console.log(name.valueOf());//返回字符串的原始值
+    </script>
+    <script>
+        //Boolean类型
+        var flag=true
+        var isMale=false
+        console.log(flag,isMale,typeof flag,typeof isMale);
+    </script>
+    <script>
+        //Null类型
+        var car=null
+        console.log(car,typeof car);
+    </script>
+    <script>
+        //Undefined类型
+        //未给变量赋值时，默认值为undefined
+        var test
+        console.log(test,typeof test);
+    </script>
+    <script>
+        //Object类型
+        var person={
+            name:"李四",
+            age:20,
+            height:1.85
+        }
+        //拿到某一个属性
+        console.log(person.name,person.height);
+        console.log(person,typeof person);
+    </script>
+    //数据类型转换
+    <script>
+      var num=123
+      var age=18
+      var isMale=true
+      //隐式转换
+      var num1Str=num+""
+      var ageStr=age+""
+      var isMaleStr=isMale+""
+      console.log(typeof num1Str,typeof ageStr,typeof isMaleStr);
+      //显式转换
+      var num1Str1=String(num)
+      console.log(typeof num1Str1);
+    </script>
+    //比较运算符
+    <script>
+        var num1=10
+        var num2=5
+        var isMax=num1>num2
+        console.log(isMax);
+    </script>
+</body>
+</html>

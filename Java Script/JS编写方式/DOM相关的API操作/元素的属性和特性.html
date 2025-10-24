@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 属性attribute -->
+     <!-- 
+    attribute的分类
+     (1)标准属性:元素天生就有的属性,比如id,class,title,style等
+     (2)自定义属性:用户自己定义的属性,比如data-*等
+     (3)事件属性:以on开头的属性,比如onclick,onmouseover等
+     (4)布尔属性:值为true或false的属性,比如checked,disabled等
+     -->
+     <div id="abc" class="box" title="box">
+        我是box
+     </div>
+     <a href="https://www.baidu.com">跳转百度</a>
+    <!-- attribute的操作 -->
+     <script>
+        var div = document.querySelector("div");
+        // 所有的元素都支持的方法
+        //getAttribute()方法:获取元素的属性值
+       //hasAttribute()方法:判断元素是否有某个属性
+       //setAttribute()方法:设置元素的属性值
+       //removeAttribute()方法:移除元素的属性
+       console.log(div.getAttribute("id"));
+       console.log(div.hasAttribute("class"));
+       console.log(div.setAttribute("name","new box"));
+       console.log(div.removeAttribute("class"));
+    //    property的操作
+     console.log(div.id);
+     console.log(div.className);
+     console.log(div.title);
+     console.log(div.checked);
+     </script>
+</body>
+</html>

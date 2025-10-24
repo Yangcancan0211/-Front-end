@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //给整个script开启严格模式
+        "use strict"
+        function foo() {
+            //给函数开启严格模式
+            "use strict"
+           var m = "foo"
+            console.log(m);
+        }
+        foo()
+
+        //1.不会意外创建全局变量
+         function bar() {
+          var message = "Hello World"
+                console.log(message);
+         }
+         bar ()
+         //2.发现静默错误
+         var obj = {
+            name: "张三",
+            age:18
+         }
+         //不能修改属性
+         Object.defineProperty(obj,"name",{
+            writable: false,
+            configurable :false
+         })
+         console.log(obj.name);
+         //不能删除属性
+         delete obj.name 
+         console.log(obj.name);
+ </script>
+</body>
+</html>

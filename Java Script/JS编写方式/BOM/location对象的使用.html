@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>跳转</button>
+    <button>返回</button>
+    <button>刷新</button>
+    <script>
+        //完整的URL
+        console.log(location.href);
+        //主机名
+        console.log(location.hostname);
+        //端口号
+        console.log(location.port);
+        //路径名
+        console.log(location.pathname);
+        //查询字符串
+        console.log(location.search);
+        //哈希值
+        console.log(location.hash);
+        console.log(location.host);
+        console.log(location.search);
+        //location方法
+        // var btns=document.querySelector("button")
+        // btns[0].onclick=function(){
+        //     location.assign("https://www.baidu.com")
+        // }
+        // btns[1].onclick=function(){
+        //     location.back()
+        // }
+        // btns[2].onclick=function(){
+        //     location.reload()
+        // }
+        //跳转
+        // btns[3].onclick=function(){
+        //     location.href="https://www.baidu.com"
+        // }
+        //URLSearchParams对象
+        var urlSearchString="?naem=whji&age=18&height=1.90"
+        var urlSearchParams=new URLSearchParams(urlSearchString)
+        console.log(urlSearchParams.get("name"));
+        urlSearchParams.append("address","深圳")
+        console.log(urlSearchParams.toString());
+    </script>
+</body>
+</html> 

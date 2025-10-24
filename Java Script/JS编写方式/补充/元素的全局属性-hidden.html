@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" class="cba" title="我是一个盒子" style="color:red;">hhhhh</div>
+    <script>
+        //1.获取元素
+        var boxEl=document.querySelector("#box")
+        var btnEl=document.querySelectorq("btn")
+        //2.监听btn点击事件
+         btnEl.onclick=function(){
+            //隐藏
+            boxEl.hidden=true
+            //切换
+            boxEl.hidden=false
+            if(boxEl.hidden){
+                boxEl.hidden=false
+            }else{
+                boxEl.hidden=true
+            }
+            //直接取反
+             boxEl.hidden=!boxEl.hidden
+         }
+    </script>
+</body>
+</html>

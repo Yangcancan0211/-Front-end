@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 以下划线开头的属性, 是为了内部使用, 不应该被外部访问 */
+        //针对对象
+        //方式一:描述符
+        var obj ={
+            _name: "张三",
+            _age: 10
+        }
+        Object.defineProperty(obj, "name",{
+        configurable: true,
+        enumerable: true,
+        set: function() {
+        },
+        get: function() {
+        }
+        })
+
+        //方式二: 直接在对象中定义访问器
+        var obj = {
+            _name: "张三",
+            //setter方法
+            set name(newName) {
+                this._name = newName
+            },
+            //getter方法
+            get name() {
+                return this._name
+            }
+        }
+        
+        //针对类
+        //方式一: 直接在类中定义访问器
+        class Person {
+            constructor(name, age) {
+                this._name = name
+                this._age = age
+            }
+            set name(newName) {
+                this._name = newName
+            }
+            get name() {
+                return this._name
+            }
+        }
+         var p1 =new Person("张三", 10)
+         p1.name = "李四"
+         console.log(p1);
+    </script>
+</body>
+</html>

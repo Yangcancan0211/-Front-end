@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.定义一个对象
+        var person={
+            //属性
+            name:"Tom",
+            age:18,
+          height:1.88,
+          friend:{
+            name:"kim",
+            age:19
+          },
+          //方法
+          run: function(){
+            console.log("running");
+          },
+          eat: function(){
+            console.log("eating");
+          }
+        }
+       //2.访问对象中的属性
+       console.log(person.name);
+       console.log(person.friend.age);
+       person.run()
+       //3.修改对象中的属性
+        person.friend.age=20
+        //4.添加对象中的属性
+        person.friend.height=1.90
+        person.studying=function() {
+        console.log("studying");
+        }
+        console.log(person);
+        //5.删除对象的属性
+        delete person.age
+        console.log(person);
+        //对象方括号的使用
+        var obj={
+            name:"Amy",
+            "my friend":"Lisa",
+            "Eating someting":function(){
+                console.log("eating");
+            }
+        }
+        console.log(obj["my friend"]);
+        console.log(obj.name);
+        console.log(obj["name"]);
+         obj["Eating someting"]()
+         //对象的遍历
+         var info={
+          name:"why",
+          age:18,
+          height:1.98
+         }
+         //1.普通的for循环
+         var infoKeys=Object.keys(info)
+        for(var i=0;i<infoKeys.length;i++){
+        var key=infoKeys[i]
+        var value=info[key]
+        console.log(`key:${key},value:${value}`);
+        }
+        //2.for in
+        for(var key in info){
+        var value=info[key]
+        console.log(`key:${key},value:${value}`);
+        }
+    </script>
+</body>
+</html>

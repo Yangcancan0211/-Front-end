@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小米官网</title>
+  <style>
+      /* 重置 */
+     body,h1,h2,h3{
+      margin: 0;
+      padding: 0;
+    }
+    a{
+      text-decoration: none;
+    }
+    .mi_wrapper{
+      width: 1226px;
+      margin: 0 auto;
+      margin-top: 30px;
+    } 
+    .dress .header{
+      height: 58px;
+      line-height: 58px;
+    }
+    /* 浮动 */
+     .dress .header .left-area{
+      float: left;
+    }
+    .dress .header .right-area{
+      float: right ;
+      font-size: 12px;
+    }
+      /* 清除浮动 */
+    .clear_fix::after{
+      content: "";
+      display: block;
+      clear: both;
+      height: 0;
+      visibility: hidden;
+    } 
+   .dress .header .right-area .item1{
+      margin-right: 14px;
+    } 
+    .dress .header .right-area .item1:hover,  .dress .header .right-area .active{
+      padding: 3px 0;
+      border-bottom: 2px solid red;
+      color: red;
+      cursor: pointer;
+    }
+    .dress .list .item:hover{
+      box-shadow: 0 15px 30px rgba(0,0,0,.5);
+    }
+  </style>
+   <style>
+    .content{
+   width: 1226px;
+   margin: 0 auto;
+    }
+    .box{
+      margin-right: -10px;
+    }
+    .item{
+    width: 296px;
+    background-color: antiquewhite;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    }
+    .left{
+      height: 370px;
+    }
+    .right{
+      height: 180px;
+    }
+    </style>
+</head>
+<body>
+  <div class="mi_wrapper dress">
+    <div class="header clear_fix">
+      <div class="left-area">
+        <h3 class="title">智能穿戴</h3>
+      </div>
+      <div class="right-area" >
+        <a class="item1 active hot" href="#">热门</a>
+        <a class="item1 info" href="#">穿戴</a>
+      </div>
+    </div>
+    <div class="list"></div>
+  </div>
+   <div class="content">
+    <div class="box">
+  <div class="item left"></div>
+  <div class="item left"></div>
+  <div class="item right"></div>
+  <div class="item right"></div>
+  <div class="item right"></div>
+  <div class="item right"></div>
+   <div class="item right"></div>
+  <div class="item right"></div>
+  <div class="item right"></div>
+  <div class="item right"></div>
+   <div class="item right"></div>
+  <div class="item right"></div>
+  <div class="item right"></div>
+  <div class="item right"></div>
+   <div class="item right"></div>
+  <div class="item right"></div>
+  <div class="item right"></div>
+  <div class="item right"></div>
+    </div>
+  </div>
+</body>
+</html>

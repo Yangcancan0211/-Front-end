@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Person的显式原型对象
+        function Person () {
+            
+        }
+        var PersonPrototype = Person.prototype
+        console.log(Person.prototype);
+        console.log(PersonPrototype.constructor);
+        console.log(PersonPrototype.constructor === Person);
+
+        console.log(Person.name);
+        console.log(PersonPrototype.name);
+         //实例对象p
+         var p = new Person()
+         console.log(p.__proto__.constructor);
+    </script>
+</body>
+</html>

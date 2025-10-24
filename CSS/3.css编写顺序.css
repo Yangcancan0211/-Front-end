@@ -1,0 +1,27 @@
+/*
+大纲： 1、定位position和布局
+      2、展示display和可见visbility
+      3、盒子模型的顺序
+      4、字体、文本
+1、先确定盒子本身是如何布局的
+*position:absolute
+*float:left/right
+*display:flex
+2、盒子的特征和可见性
+*display:block/inline/inline-block/none
+*visibility:visible/hidden
+3、盒子模型
+*width/height
+*box-sizing:content-box/border-box
+*margin/padding/border/content
+4、内部的文本文字
+*font/text
+5、background
+*background-image/color/position/size/repeat/attachment
+6、其他
+*transform/transition/overflow/white-space
+*/
+/* 
+组件化开发思想：将一个复杂的界面拆分成一个个小的组件，组件之间相互独立，便于维护和复用
+
+*/

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <script>
+    //  var liEls=document.querySelectorAll("li")
+    //  for(var liEl of liEls){
+    //     //监听点击
+    //     liEl.onclick=function(){
+    //         //添加类名
+    //         event.currentTarget.classList.add("active")
+    //     }
+    //  }
+    //事件委托
+    // var ulEl=document.querySelector("ul")
+    // //监听点击
+    // ulEl.onclick=function(event){
+    //     //添加类名
+    //     event.target.classList.add("active")
+    // }
+    //点击li变成active,其他移除active
+    var ulEl=document.querySelector("ul")
+    var activeLiEl=null
+    ulEl.onclick=function(event){
+        //1.利用循环遍历
+    //     for(var i=0;i<ulEl.children.length;i++){
+    //         var liEl=ulEl.children[i]
+    //         if(liEl.classList.contains("active")){
+    //    ulEl.children[i].classList.remove("active")
+    //     }
+    // }
+    //     event.target.classList.add("active")
+    // }
+    //2.第二种方法
+    // var activeEl=ulEl.querySelector(".active")
+    // activeEl && activeEl.classList.remove("active")
+    // event.target.classList.add("active")
+    //3.利用变量记录方式
+    if(activeLiEl && event.target !==ulEl){
+        activeLiEl.classList.remove("active")
+    }
+    if(event.target !==ulEl){
+        event.target.classList.add("active")
+    }
+    //记录最新active对应的li
+    activeLiEl=event.target
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            height: 200px;
+            width: 200px;
+            background-color:red;
+        }
+        span{
+            display: inline-block;
+            justify-content: center;
+            height: 100px;
+            width: 100px;
+            background-color: orange;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+    <span ></span>
+    </div>
+    <script>
+        var boxEl=document.querySelector(".box")
+        var spanEl=document.querySelector("span")
+        //第一组
+        boxEl.onmouseenter=function(){
+            console.log("box进入");
+        }
+        boxEl.onmouseleave=function(){
+            console.log("box离开");
+        }
+        //第二组
+        spanEl.onmouseover=function(){
+            console.log("span进入");
+        }
+        spanEl.onmouseout=function(){
+            console.log("span离开");
+        }
+    </script>
+</body>
+</html>

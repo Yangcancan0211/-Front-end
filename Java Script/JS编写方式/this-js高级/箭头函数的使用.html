@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.之前的写法
+        function foo() {}
+        var foo1 = function(age,name) {
+            console.log("foo1:",this);
+        }
+        //2.箭头函数的写法
+        var foo2 = (name,age) => {
+            console.log("函数");
+            console.log(name,age);
+        }
+        //3.箭头函数的练习
+        var names =["张三","李四","王五"]
+        names.forEach((item,index,arr) => {
+            console.log(item,index,arr);
+        })
+        //setTimeout的练习
+        setTimeout(() => {
+            console.log("定时器");
+        },3000);
+        //简洁写法
+        /*
+        1.如果只有一个参数,那么()可以省略
+        2.如果函数体中只有一行执行代码,那么{}可以省略,同时return也会被隐式的添加
+        3.如果函数执行体只有一个返回对象,那么()可以省略
+        4. 只有一行代码时,这行代码的表达式结果会作为函数的返回值默认返回
+        */
+          names.forEach(item => {
+            console.log(item);
+          })
+          names.forEach(item => console.log(item))
+        //   var newNum = nums.filter(item => item > 10)
+        //   console.log(newNum);
+          //箭头函数实现nums的所有偶数平方的和
+          var nums = [10,15,20,25,30]
+          var sum = nums.filter(item => item % 2 == 0)
+                        .map(item => item * item)
+                        .reduce((pre,cur) => pre + cur)
+                        console.log(sum);
+    </script>
+</body>
+</html>

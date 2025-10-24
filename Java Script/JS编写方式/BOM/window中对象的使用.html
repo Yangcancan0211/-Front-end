@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="http://www.baidu.com" target="_blank">百度一下</a>
+    <button class="open">百度一下</button>
+    <button class="close">关闭窗口</button>
+    <script>
+        //浏览器窗口
+        console.log(window.outerHeight)
+        //botton元素模拟a元素
+        var openBtnEl=document.querySelector("button")
+        openBtnEl.onclick=function(){
+            //在当前页面打开
+            window.open("http://www.baidu.com","_self")
+        }
+        var closeBtnEl=document.querySelector(".close")
+        closeBtnEl.onclick=function(){
+            window.close()
+        }
+        //焦点
+        window.onfoucs=function()
+        {
+            console.log("获得焦点");
+        }
+        window.onblur=function(){
+            console.log("失去焦点");
+        }
+        //hashchange事件
+        window.onhashchange=function(){
+            console.log("hash值发生了改变");
+        }
+
+    </script>
+</body>
+</html>

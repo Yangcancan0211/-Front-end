@@ -1,0 +1,31 @@
+// 1.运算 在less中可以直接进行数学运算，+-*/,()等符号均可使用
+.box{
+
+    width: 50px*2;
+    height: 10%+100px;
+    background-color:#00ff00+#ff0000; 
+}
+// 2.1混入
+.nowarp_ellipsis{
+    white-space: norwarp;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+// 2.2混入可以传递参数(定义变量)
+.box_border(@borderWidth:5px,@borderColor:orange){
+    border: @borderWidth solid @borderColor;
+}
+// 2.3混入和映射结合使用:可以实现类似函数的功能
+.box1{
+    width: 100px;
+    background-color: #00ff00;
+    .nowarp_ellipsis();
+    .box_border();
+}
+.box2{
+    width: 120px;
+    background-color: #ff0000;
+    .nowarp_ellipsis();
+    .box_border(10px,blue);
+}
+// 

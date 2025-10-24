@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn">计数</button>
+    <h2 class="counter">0</h2>
+    <script>
+        //1.获取按钮
+        var btnEl = document.querySelector(".btn")
+        var h2El=document.querySelector(".counter")
+        //监听btnEl的点击事件
+        btnEl.onclick=function(){
+            //2.获取当前计数
+             var currentCount=parseInt(h2El.textContent)
+             //3.更新计数
+             currentCount++
+             h2El.textContent=currentCount
+        }
+    </script>
+</body>
+</html> 

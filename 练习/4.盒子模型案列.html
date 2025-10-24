@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<link rel="stylesheet" href="./3.重置.css">
+<style>
+  .item{
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    background-color: #fff;
+    padding: 20px 20px;
+    text-align: center;
+    box-sizing: border-box;
+   }
+   .item:hover{
+    box-shadow: 0 5px 30px 5px raga(0,0,0,.2)
+   }
+  .item img{
+    height: 150px;
+    width: 150px;
+  }
+  /* 单行显示省略号 */
+  .item .dec{
+    color: #999;
+    margin-top: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .item .price{
+    margin-top: 8px;
+    font-size: 15px;
+  }
+  .item .new-price{
+    color: orange;
+  }
+  .item .old-price{
+   color:#999;
+   text-decoration: line-through;
+  }
+</style>
+<body>
+  <a class="item" href="https://www.mi.com/shop/buy/detail?product_id=20581&cfrom=search">
+    <img src="../HTML/img/202407172343_0b9a969d63cbc11f6ec93789a897cc37.png" alt="">
+    <h3>Redmi手环3 黑色</h3>
+    <p class=" dec">18天超长续航 | 60Hz高刷大屏 | 全天健康监测</p>
+    <div class="price">
+      <span class="new-price">159元</span>
+      <span class="old-price">169元</span>
+    </div>
+  </a>
+</body>
+</html>

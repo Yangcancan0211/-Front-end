@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //函数中有message变量，所以在函数中查找message变量时，优先在函数作用域中查找
+        // console.log(message);//undefined
+        // var message = "Global message";
+        // function foo() {
+        //     var message = "foo message"
+        //     console.log(message);}
+        //     foo();
+        //函数中没有message变量，所以在函数中查找message变量时，先在函数作用域中查找，找不到再到全局作用域中查找
+          console.log(message);//undefined
+        var message = "Global message";
+        function foo() {
+            console.log(message);
+        }
+            foo();
+    </script>
+</body>
+</html>

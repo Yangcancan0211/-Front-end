@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person {
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+            running() {
+                console.log(this.name + "running~");
+            }
+             eating() {
+                console.log(this.name + "eating~");
+            }   
+        }
+        class Student extends Person {
+            constructor(name, age, sno, score) {
+                super(name, age)
+                this.sno = sno
+                this.score = score
+            }
+            studying() {
+                console.log(this.name + "studying~");
+            }
+        }
+        class Teacher extends Person{
+            constructor(name, age, title) {
+              super(name, age)
+                this.title = title
+            }
+            teaching() {
+                console.log(this.name + "teaching~");
+            }
+        }
+        var stu1= new Student("张三", 10, "1001", 90)
+        stu1.running()
+        stu1.studying()
+        console.log(stu1);
+        var tea1= new Teacher("李四", 30, "高级教师")
+        tea1.eating()
+        tea1.teaching()
+        console.log(tea1);
+    </script>
+</body>
+</html>

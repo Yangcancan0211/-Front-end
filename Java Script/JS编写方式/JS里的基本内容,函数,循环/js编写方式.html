@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1.编写在html内部 -->
+    <a href="#" onclick="alert('百度一下')">百度一下</a>
+    <!-- 2.编写在script元素之内 -->
+     <a class="google" href="">谷歌一下</a>
+     <script>
+    const googleEl=document.querySelector('#google');
+    googleEl.onclick=function(){
+        alert("谷歌一下");
+    }
+     </script>
+    <!-- 3.编写在外部js文件中 -->
+    <script src="./js/hello.js"></script>
+    <!-- noscript元素的使用 -->
+     <script>
+    document.write('<noscript>请开启脚本支持</noscript>');
+     </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+// 1.直接编写css代码
+// .box{
+//     width: 200px;
+//     height: 200px;
+//     background-color: lightblue;
+//     font-size: 20px;
+//     color: #fff;
+// }
+// 2.定义变量
+@main-color: orange;
+@font-size: 30px;
+@normalFontSize: 16px;
+@bigFontSize: 24px;
+// .box .pel{
+//   color: @main-color;
+//   font-size: @bigFontSize;
+// }
+// .box h1 .keyword{
+//   color: @main-color;
+//   font-size: @font-size;
+// }
+// .box p .link{
+//     color: @main-color;
+//     font-size: @normalFontSize;
+// }
+// 3.选择器的嵌套 &表示父选择器
+.box{
+    .pel{
+      color: @main-color;
+      font-size: @bigFontSize;
+    }
+    h1{
+     .pel{
+        color: @main-color;
+        font-size: @font-size;
+     }
+    }
+    p{
+        .link{
+            color: @main-color;
+            font-size: @normalFontSize;
+            &:hover{
+                color:#00f;
+            }
+        }   
+    }
+}
+// &的练习
+.item{
+    .list{
+        color: red;
+        font-size: 20px;
+        &:hover{
+            color:@main-color;
+        }
+        &::nth-child(2){
+            color:blue;
+        }
+    }
+}

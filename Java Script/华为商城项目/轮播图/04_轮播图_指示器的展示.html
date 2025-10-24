@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        .banner{
+            position: relative;
+        }
+        .banner .images{
+        position: relative;
+        height: 550px;
+        }
+        .banner .images .item{
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100%;
+         overflow: hidden;
+         opacity: 0;
+         transition: opacity 1000ms ease;
+        }
+          .banner .images .item.active{
+            opacity: 1;
+        }
+        .banner .images .item img{
+           position: relative;
+           transform: translate(-50%);
+           left: 50%;
+           width: 1920px;
+           height: 550px;
+        }
+        .indicator{
+            position: absolute;
+            bottom: 36px;
+            display: flex;
+            left: 0;
+            right: 0;
+            justify-content: center;
+        }
+        .indicator .item{
+            width: 8px;
+            height: 8px;
+            margin: 0 8px;
+            border-radius: 50%;
+            background-color: #aaa;
+            cursor: pointer;
+        }
+        .indicator .item.active{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <ul class="images">
+        </ul>
+        <div class="control">
+            <button class="prev">上一个</button>
+            <button class="next">下一个</button>
+        </div>
+        <div class="indicator"></div>
+    </div>
+    <script src="./Json/banner.js"></script>
+    <script>
+        //0.banner的serverURL
+        var bannerServarURL = "http://res.vmallres.com/"
+
+        //1.根据数据动态添加页面内容
+
+        //1.1.动态添加轮播图图片的数据
+        var imagesEl = document.querySelector(".images")
+        var activeItem = null
+         var currentIndex = 0
+        var prevIndex = 0
+        for (var i = 0;i < banners.length ;i++){
+            //获取数据
+            var banner = banners[i]
+            //创建li元素
+            var itemEl = document.createElement("li")
+            itemEl.classList.add("item")
+            if (i === 0){
+                itemEl.classList.add("active")
+                activeItem = itemEl
+            }
+            imagesEl.append(itemEl)
+            //创建img元素
+            var imgEl = document.createElement("img")
+            imgEl.src = `${bannerServarURL}${banner.imgUrl}`
+            itemEl.append(imgEl)
+        }
+        //1.2动态添加指示器内容
+        var indicatorEl = document.querySelector(".indicator")
+        for (var i = 0; i < banners.length;i++){
+            var itemEl = document.createElement("div")
+            itemEl.classList.add("item")
+            if (i == 0){
+                itemEl.classList.add("active")
+            }
+            indicatorEl.append(itemEl)
+            //监视指示器item的点击事件
+            itemEl.index = i
+            itemEl.onclick = function() {
+                //切换指示器
+                prevIndex = currentIndex
+                currentIndex = this.index
+                switchBannerItem()
+            }
+        }
+        //监听按钮的点击
+        var controlEl = document.querySelector(".control")
+        var nextBtnEl = document.querySelector(".next")
+        var prevBtnEl = document.querySelector(".prev")
+        prevBtnEl.onclick = function() {
+          prevIndex = currentIndex
+            currentIndex--
+            if(currentIndex < 0){
+                currentIndex = banners.length - 1
+            }
+            //切换图
+            switchBannerItem()
+        }
+        nextBtnEl.onclick = function() {
+           nextSwitch()
+        }
+        //自动轮播效果
+        // setInterval(nextSwitch,3000)
+       var timer = null
+       timer =  setInterval(function(){
+           nextSwitch()
+          },3000)
+        //暂停自动播放
+        imagesEl.onmouseenter = function() {
+            clearInterval(timer)
+        }
+        //鼠标离开继续自动播放
+        imagesEl.onmouseleave = function() {
+            timer = setInterval(function(){
+                nextSwitch()
+            },3000)
+        }
+        //封装函数
+        function switchBannerItem() {
+      var currentItemEl = imagesEl.children[currentIndex]
+            var prevItemEl = imagesEl.children[prevIndex]
+            currentItemEl.classList.add("active")
+            prevItemEl.classList.remove("active")
+            //切换指示器
+            var currentIndicatorItemEl = indicatorEl.children[currentIndex]
+            var prevIndicatorItemEl = indicatorEl.children[prevIndex]
+            currentIndicatorItemEl.classList.add("active")
+             prevIndicatorItemEl.classList.remove("active")
+        }
+      //封装到函数
+      function nextSwitch() {
+          prevIndex = currentIndex
+            currentIndex++
+            if(currentIndex === banners.length){
+                currentIndex = 0
+            }
+            //切换图
+            switchBannerItem()
+      }
+      //封装时间函数
+        </script>
+</body>
+</html>

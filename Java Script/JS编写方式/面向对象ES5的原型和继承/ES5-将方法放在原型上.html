@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <script>
+        function Student(name, age, sno){
+            this.name = name
+            this.age = age 
+            this.sno = sno
+        }
+        //1.编写函数, 会创建很多个对象,每个对象都有自己的方法,占用内存
+        // this.running = function() {
+        //     console.log(this.name + " running ");
+        // }
+        // this.eating = function() {
+        //     console.log(this.name + " eating ");
+        // }
+        // this.studying = function() {
+        //     console.log(this.sno + "studying]");
+        // }
+        //当多个对象拥有共同的值时,可以将它放到构造函数对象的显式原型上
+        //由构造原型创建出来的所有对象,都可以共享这些属性
+        Student.prototype.running = function() {
+            console.log(this.name + " running");
+        }
+        Student.prototype.eating = function() {
+            console.log(this.name + " eating ");
+        }
+        Student.prototype.studying = function() {
+            console.log(this.name + " studying");
+        }
+
+        //创建学生  弊端:要创建很多个对象,每个对象都有自己的方法,占用内存
+        var stu1 = new Student("张三",18,"20230101")
+        var stu2 = new Student("李四",19,"20230102")
+        var stu3 = new Student("王五",20,"20230103")
+
+        //隐式原型的作用
+        stu1.running()
+        stu2.eating()
+        stu3.studying()
+     </script>
+</body>
+</html>

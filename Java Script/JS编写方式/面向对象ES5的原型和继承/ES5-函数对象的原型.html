@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {}
+        function foo(){
+            //1.将函数看作一个普通对象,具备__proto__属性(隐式原型)
+            //作用:
+            console.log(obj.__proto__);
+            console.log(foo.__proto__);
+            //2.函数的__proto__属性指向Function.prototype
+            console.log(foo.__proto__ === Function.prototype);
+            //3.将函数看作一个函数,具备 prototype属性(显式原型)
+            console.log(foo.prototype);
+        } 
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person() {
+
+        }
+        console.log(Person.prototype);
+        //在原有的原型属性上添加新的属性
+        // Person.prototype.info = {name:"hhh ", age: 18, sex:"男"}
+        // Person.prototype.message = "Hello World"
+        // Person.prototype.running = function(){}
+
+        //1.直接赋值一个新的原型对象
+        Person.prototype = {
+            info : {name:"hhh ", age: 18, sex:"男"},
+            message : "Hello World",
+            running : function(){},
+            // constructor: Person
+        }
+        Object.defineProperty(Person.prototype,"constructor",{
+            enumerable: false,
+            configurable: true,
+            writable: true,
+            value: Person
+        })
+        //新建实例对象
+        var p1 = new Person()
+       console.log(p1.message);
+
+    </script>
+</body>
+</html>

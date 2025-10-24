@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //1.获取html元素
+        const htmlE1 = document.documentElement;
+        function setRemUnit(){
+            //2.获取html的宽度(视口的宽度)
+            const htmlwidth = htmlE1.clientWidth;
+            //3.根据宽度计算一个html的font-size大小
+           const htmlFontsize= htmlwidth/10;
+           //4.将font-size设置到html元素上
+              htmlE1.style.fontSize = htmlFontsize+'px';
+        }
+        //保证第一次进来的时候，可以设置一次font-size
+        setRemUnit();
+        //当屏幕尺寸发生变化时，实时来修改html的font-size
+        window.addEventListener("resize",setRemUnit);
+    </script>
+    <style>
+        .box{
+            width: 10em;
+            height: 10em;
+            background-color: orange;
+        }
+        p{
+            font-size: 0.5rem;
+        }
+        </style>
+</head>
+<body>
+    <div class="box">
+        </div>
+        <p>我是p元素</p>
+</body>
+</html>

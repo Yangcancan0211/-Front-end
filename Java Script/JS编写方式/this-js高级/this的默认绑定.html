@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //默认绑定: 独立函数调用, this指向全局对象(浏览器中是window, Node.js中是global)
+        //定义函数
+        //1.普通的函数被独立调用
+        function foo() {
+            console.log("foo:",this);
+        }
+        foo()
+
+        //2.函数定义在对象中,但独立调用
+        var obj = {
+            name:"张三",
+            age:18,
+            sex:"男",
+            bar : function () {
+                console.log("bar:",this);
+            }
+        }
+        var baz = obj.bar;
+        baz()
+
+        //3.在严格模式下,独立调用的函数中,this指向undefined
+        "use strict";
+        function strictFoo() {
+            console.log("strictFoo:",this);
+        }
+        strictFoo()
+
+        //4.高阶函数
+        function test(fn) {
+            fn()
+        }
+        test(obj.bar)
+    </script>
+</body>
+</html>

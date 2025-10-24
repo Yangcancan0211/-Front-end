@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>请输入信息来创建列表</h1>
+    <ul class="list">
+    </ul>
+    <script>
+      var ulEl=document.querySelector(".list")
+      var isFlag=true
+      while(isFlag){
+      var message=prompt("请输入信息:")
+      if(!message){
+        isFlag=false
+      }else{
+      var liEl=document.createElement("li")
+      liEl.textContent=message
+      ulEl.append(liEl)
+      }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+/* CSS（层叠式样式表）是为网页添加样式的代码 css1->css2->css3
+美化html：1.添加样式，大小，颜色等
+         2.布局
+  格式：color:  red;
+        属性 属性的值
+           声明
+三种方法：1.内联样式：存在于HTML中的style元素中 建议css样式间用;分开 <元素 style="属性: 值; 属性: 值;">内容</元素>
+         2.内部样式表（文档样式表）<head><style>选择器 {属性: 值;}</style></head>
+         3.外部样式表 <head><link rel="stylesheet" href="styles.css"></head>
+常见的css元素：定位 展示 盒子模型 背景设置 字体、文本 其他属性
+网站：http://www.caniuse.com/ 
+     http://www.w3.org/TR/?tag=css
+常见属性：font-size字体大小 color前景色(文字、装饰线、边框) background-color背景色 width宽度 height宽度 
+颜色表示方法：1.颜色的关键字（color keywords）
+             2.RGB（原色空间）通过R(red)、G(green)、B(blue)三原色组成不同颜色（调整颜色的比例）范围0-255
+             background-color:rgb(R255,G100,B200); 黑色(black)rgb（0,0,0）#000000 缩写：#000;白色(white)(255,255,255)#FFFFFF 缩写：#FFF;
+             rgb表示方法：1.十六进制表示法（1）background-color:#646464 (2)RGBA:A表示透明度#00ff3388
+浏览器的渲染流程：Lode(HTML)->解析HTML->下载css->解析css和creat Dom tree->display
+CSS文本属性：1.text-decoration(设置文本的装饰线) none:无装饰线 underline:下划线 overline：上划线 line-through：中划线（删除线）
+            2.text->transform(设置文本的大小写) capitailize(首字母大写) uppercase(转化为大写) lowercase(转化为小写) none(无影响) 
+            3.text-indent(第一行的缩近)  em:相当于字体的大小 2em（2倍）浏览器默认16px
+            4.text-align（设置文本的对齐）left:左对齐 right：右对齐 center:居中显示 justify:两端对齐   text-align-last：最后一行对齐
+CSS字体属性：1.letter-spacing（设置字母间距）
+            2.word-spacing（设置单词间距）
+            3.font-size:字体大小 单位：px、em 用百分比
+            4.font-family：字体样式 可以设置1个或多个字体名称 浏览器选择第一个在计算机上安装的字体 或者通过@font-face指定直接下载的字体
+            5.font-weight：字体加粗 normal:400 bold:700 h1-h6标签用的bold
+            6.font-style：斜体 normol：普通的 oblique（让文本倾斜）/italic(字体本身支持斜体时，显示的斜体)：斜体 
+            7.font-variant:影响小写字母显示形式 normal：正常显示 small-caps
+            8.line-height：行高(行与行之间的间距 两条基线（与小写字母x最底部对齐的线）之间的间距) 居中 line-height-文本高度=行距
+            9.font(缩写属性) 顺序：font-style font-variant font-weight font-size/line-height font-family 
+                            前三个位置可以调换或省略 /line-height可以省略，但必须在font-szie后面 font-size和font-family不能省略
+
+常见的css选择器：按照一定规则选择符合条件的元素，为之添加css样式
+      通用选择器(效率比较低)：一次性选择多个元素 写法：1.*(匹配所有元素)缺点：浏览器会遍历没有出现的元素 2.eg.div,p,span,h1,h2{padding:0;margin:0;} 重置
+      简单选择器：使用元素的名称 类选择器：使用.类名 id选择器：使用#id名 ！！！在同一个html文档中，不能重复使用id，不要用标签名作为id名
+      属性选择器：[元素属性] eg.[title]拥有某一个属性 || [title=div]属性等于某个值
+      后代选择器（嵌套元素）：所有的后代（包括直接和间接后代）.home span(全部子代) .home>span(直接子代)
+      兄弟选择器：相邻兄弟:eg. .one+div(或者.属性名)   全兄弟:.one~div
+      选择器组：1.交集选择器  同时符合两个条件 div.box 既是一个div，也要有一个class为box
+               2.并集选择器  符合一个条件就行 .one,.two
+      伪类：选择处于特定状态的元素  属性名:hover{} 
+           1.动态伪类：:hover（鼠标放上去时候，会变成其他颜色）必须放在:link和:visited后面才能完全生效
+           :active(激活 鼠标在链接上长按住未松开) 必须放在:hover后面才能生效
+           编写顺序：:link :visited (a:focus) a:hover :active （LVHA）
+           eg.a:link 未访问的链接 a:visited 已访问的链接 a:focus元素聚焦(用tab键) a:hover 鼠标挪动到链接上 a:active 激活的链接
+           2.目标伪类：target
+           3.语言伪类：lang()
+           4.元素状态伪类：
+        !!!5.结构伪类(具体找到子元素)：nth-child(具体选中的元素序号2n：n代表正整数和0) (4n+1)  但不会排除干扰，从前往后数
+            列表前几个：nth-child(-n+5):前五个
+            列表后几个: nth-last-child(从后往前面数)（-n+2）代表最后两个元素
+            nth-of-type(排除干扰):只会计算同种类型的元素 nth-last-of-type:从后往前数
+            first-child:第一个子元素 last-child:最后一个子元素 only-child:唯一子元素
+           6.:root(html元素)
+           7.:empty(为空的元素会被选中)
+           6.否定伪类:not
+     伪元素：1.::first-line 可以针对首行文本设置
+            2.::first-letter 可以针对首字母设置
+            3.::before 在元素之前进行操作
+            4.::after 在元素之后进行操作 （补充设置图标）
+
+css属性的特性：1.继承性：默认继承和继承计算值
+              具备继承性的元素：font-size font-family font-weight line-height color text-align(一般和文本相关的具有)
+              2.层叠性：对于一个元素，相同属性可以通过不同选择器进行多次设置，所以属性会被一层一层覆盖掉，最后只有一个会生效
+              根据权重排一个优先级，权重大的生效；权重相同的，后面设置的生效
+              权重大小：！important(10000)>内联样式(1000)>id选择器(100)>类选择器、属性选择器、伪类(10)>元素选择器(1)>通配选择器(0)
+display元素: 
+   1.块级元素（非常重要，所以独占一行,block）:div/h/p  可以设置宽度和高度，设置后仍然独占一行
+   !水平居中问题：块级元素 block box width=height+border+margin 居中：margin:0 auto; 上下高度为0，左右为auto
+   2.行内级元素（某些元素属于内容的一部分，没有必要独占一行，其他内容在同一行显示，inline）：（img、input、video）（行内替换元素）/a/span 有些不可以设置宽度和高度，只能根据内容决定宽高和高度，设置margin-top无效
+   3.行内替换元素：和其让元素在同一行显示 可以设置宽度和高度
+   !行内非替换元素的特殊性：
+   3.可以修改css元素类型：display:inline/block/inline-block（在同一行显示并可以设置宽度和高度）/none(隐藏元素)
+   4.注意事项：一般块级元素中可以包裹其他元素但p元素中不能放div元素，行内级元素中不能放块级元素
+隐藏元素的方法：1.display:none; 不占据位置和空间
+               2.visibility:hidden;占据空间，但不显示
+               3.用rgba设置文本颜色，将a（alpha 透明度0~1）设置为0，但不影响子元素
+               4.通过背景颜色来隐藏 background-color:transparent; 背景完全透明
+               5.opacity: ;设置元素以及全部子代的透明度
+CSS样式不生效的原因：1.选择器优先级太低
+                   2.选择器没有选对正确的元素
+                   3.css使用的形式不对（1）元素不支持css属性（2）浏览器不支持此css属性（3）被同类型的css属性覆盖
+盒子模型：padding（上下会被撑起来，但不占据空间）：内边距 margin（上下的margin不生效）：外边距 content：内容 border（上下会被撑起来，但不占据空间）：边框 
+         都包括top/bottom/right/left四条边
+         缩写属性：(顺时针开始)top->right->bottom->left (上右下左) 
+         但可以省略其中的值，会自动等于对面的值 left=right top=bottom 
+         只有三个值：省略left，使用right的值
+         只有两个值：省略bottom，使用top的值；省略left，使用right的值
+         只有一个值：使用top的值
+      width和height：宽度和高度都有最小和最大长度 min-width/max-width min-height/max-height 一般默认值为auto
+      border：设置边框样式：border-right(top、bottom、left)-color(width、height、style) (也可以用缩写)
+              总写缩写格式：width、style、color
+      margin（元素之间的距离）：将模块之间的间距变为0：.body{font-size:0;}
+                             1.margin的传递：左右不会传递
+                             (1)margin-top:块级元素顶部线和父元素顶部线重叠，margin-top会传递给父元素
+                             (2)margin-bottom::highlight:块级元素底部线和父元素底部线重叠，且父元素高度为auto，margin-bottom会传递给父元素
+                             2.防止出现margin的传递:(1)给父元素设置padding-top\padding-bottom
+                                                   (2)给父元素设置border
+                                                   (3)触发BFC(块级格式化上下文)0:设置overflow为auto
+                             3.margin上下的折叠:左右不会折叠，折叠的值计算规则：两个值进行比较，取较大那个值
+                             4.防止出现折叠：只设置其中一个元素的margin
+                             5.中间的数据代表的是：上 右 下 左
+                             !margin-left/right:设置负值
+      盒子的嵌套：1.设置里面盒子距外面盒子的距离:(1).用margin和overflow(2).用padding和box-sizing
+      !什么时候使用box-sizing：border-box；添加border-sizing:border就会算在width和height里面
+      外轮廓：outline 1.不占据空间 2.默认显示在border外面 语法和border一样；作用去掉外轮廓：outline:none;
+      盒子的阴影(box-shadow):1.offset-x(x轴偏移量) offset-y(y轴偏移量) 2-4值 bulr(模糊度) color; 多个阴影之间用逗号隔开，从前到后进行叠加
+            eg. box-shadow:5px(水平方向偏移量) 5px(垂直方向偏移量) 10px(模糊半径) 10px(延伸半径) orange(颜色) insert(向内阴影);后面两个数值可以省略
+            在线调阴影的网站：http://html-css-js.com/css/generator/box-shadow/
+      文字阴影：text-shadow:没有延申半径，一般是2-3个值
+      背景色有会设置到border下面
+      前景色会在border没有设置颜色的情况下，显示出color的颜色
+      盒子的尺寸计算：box width=width+padding+border
+      content-box：padding、border都布置在width、height外面
+      border-box：padding、border都布置在width、height里面
+显示一行：white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+多行保留显示省略号： overflow: hidden;
+                   text-overflow: ellipsis;
+                   display: -webkit-box;
+                   -webkit-line-clam:2;
+                   -webkit-boc-orient:vertical;
+居中问题：1.text-align（行内级元素使用）：让文本、图片等内容在其父元素中居中 所以设置给父元素
+         2.margin：0 auto（块级元素本身）; 让整个块级元素在父容器中水平居中 使用必须设置固定宽度
+CSS设置背景：background-image:会盖在background-color上面,可以设置多张（第一张放在最前面，其他依次在后面显示）
+            background-repeat：用于照片是否要平铺 no-repeat(不要平铺) repeat-x(在x轴上平铺) repeat-y(在有轴上平铺)
+            background-size:设置尺寸 auto cover(缩放背景图完全覆盖元素) contain(缩放背景图 宽度和高度铺满元素 但图片保持宽高比) 百分比 length(具体大小)
+            设置两个值（宽度和高度）
+            background-position:正负标识向上或向下移动图片 水平方向：left、center、right 垂直方向：top、center、bottom
+            background-attachment:决定背景图位置 scroll:内容滚动  local:图片滚动 fixed：固定
+            滚动内容：overflo：scroll
+            background:一系列背景的简写属性 background:color||img||position/size||repeat||attachment （顺序是任意的）
+高级元素的使用:一.列表元素
+              1.可以用div元素来建立列表
+              2.用列表元素ul（无序列表）/ol（有序列表）/dl 定义列表）（ul和ol中必须用li，再用li包裹其他元素）（dl的子元素必须是dt dd）
+              二.表格元素
+              1.table:表格
+              第一种方法：tr(table row):表格中的行  td(table data):表格中的单元格
+              第二种：thead:表头 tbody:主体 tfoot:页脚 caption：标题 th:表头单元格
+              2.(1)表格合并：border-collapse: collapse(折叠);
+                (2)单元格的合并：单元格可能会跨多行或多列
+                跨列合并:colspan 在最左边的单元格写上colapan，并省略合并的td
+                跨行合并:rowspan 在最上面的单元格写上rowspan，并省略后面tr中的td
+              三.常见的表单元素
+              1.input(行内替换元素):单行文本输入框、单选框、复选框、按钮 
+              type="text文本\password密码\file文件\radio单选框(name一样会发生互斥)\checkbox复选框（相同属性的name也要一样要加value）\button按钮\reset重置\submit提交表单数据给服务器······"
+              布尔属性：disabled checked randonly autofocus
+              2.select:下拉选择框 multiple多选
+              3.option:下拉选择框
+              4.form:表单，一般情况，其他表单都是它的后代元素
+              5.textarea:多行文本框 cols：lie数 rows：行数
+              6.button:按钮
+              7.label:表单元素的标题
+继承和案例的思路：1.先完成结构
+                2.重置样式（body/a/ul）
+                3.先整体，后局部
+                *顺序：从外往里，从上往下
+                4.去除重复代码（css）
+                *将重复的逻辑放到单独的一个class中（.icon）
+                *不同的代码抽取不同的class（.new/.hot）
+!!!Emmet语法：>子代 +兄弟 *多个 ^上一级 分组() 属性[] 内容{} $数字eg:div>div{元素$}*10 隐式标签 .class名 css:w20+h10+m10+p10
+额外知识补充：
+            1.border图型:可以做出图形 
+            旋转图像:transform:rotate(角度deg) eg:(90deg)
+            transform-origin:center 25%;改变旋转轴心
+            2.设置web字体
+            (1)font-family:只能设置浏览器操作系统支持的字体
+            (2)设置特殊字体：先下载要用的字体再引入额外的字体
+            @font-face{
+            font-family:给字体取名
+            src:url();}字体所在位置
+            format:帮助浏览器快速识别字体 
+            固定格式：@font-face{
+            font-family;
+            / 必须写两个src /
+            src:url();
+            src:url() format(),
+            url() format(),
+            url() format(),
+            url() format();
+            }
+            3.字体图标:放大不会失真 可以切换任意颜色 用到多个图标，文件相对于图片内存较小
+            网站：http://www.iconfont.cn/
+         !!!4.精灵图：CSS Sprite 把很多图片和图标放在一张图片中，节约内存
+            (1)制作：http://www.toptal.com/developers/css/sprite-generator
+            (2)获取精灵图的位置：http://www.spritecow.com/
+            5.cursor:光标的使用 default:箭头 pointer:小手 text:竖线
+            !垂直居中的总结:水平居中问题:1.块级元素 block box width=height+border+margin 居中：margin:0 auto; 上下高度为0，左右为auto
+                                       2.行内级元素 设置父元素text-align:center
+                                       3.绝对定位:元素在宽度的情况下,设置left=0 right=0 margin:0 auto;
+                                       4.flex布局:justify-content:center;
+                           垂直居中问题:1.绝对定位:元素在设置高度的情况下,设置top=0 bottom=0 margin:auto 0;
+                                       2.flex布局:align-items:center; 当前flex布局中所有元素都会被垂直居中的
+                                       3.居中步骤:(1).让元素向下移动父元素50%
+                                                 (2).让元素向上移动自身的50%
+                                                 position:relative; top:50%; transform:translate(0,-50%) -表示向上移动,+表示向下移动
+transform(形变):允许对某一个元素进行形变，包括旋转、缩放、倾斜或平移 
+         !transform设置多个值：+表示可以设置一个或多个值，并且以空格分隔  box-shadow:可以设置多个值，但用，分隔
+            !（1）通常行内级元素不能进行形变 结构 transform:函数 （2）translate函数设置百分比，可以用来垂直居中
+      常见的函数transform function:平移translate(x,y):用于移动元素在平面上的位置 一个值表示x,两个值表示x,y              translate是translateX和translateY函数的缩写
+                               !用百分比时，translate百分比是相对于自身 如果设置x的位移，参考自身宽度;如果设置y的位移， 参考自身高度
+                               缩放scale(x,y)可以改变元素的大小 相对于自身进行缩放  x,y上面位置的缩放(填小于1的值或者百分比)
+                               应用：在hover情况下设置；   scaleX和scaleY单独进行缩放
+                               旋转:rotate(deg) 正数为顺时针、负数为逆时针    单位：角度、百分度、弧度、圈数
+                               倾斜:skew(deg,deg)正数为顺时针、负数为逆时针   倾斜原点受transform-origin影响
+                                transform-origin：设置坐标圆心b   默认值x、y坐标上的center
+                               设置两个值水平和垂直方向   关键字：left、right、top、bottom、center   具体值：px（根据坐标原点位置进行改变）/百分比参考自身
+transition过渡动画：
+特点：(1)提供一直在更改css属性时控制动画速度的方法
+      (2)可以让css属性持续一段时间，而不是立即生效（例如将一个元素移动位置或hover状态，默认在修改完css属性后会立即生效）
+      (3)通过css transition，让这个过程加上一定动画效果，包括一定的曲线速率变化
+应用：(1)设置要变化的属性transition-property(可以设置多个属性，用，分隔)/all(2)设置持续时间transition-duration(3)执行曲线transition-timing-function
+      (4)transition-delay延迟时间
+      可以支持动画的属性:color,padding,font-size,transform ······
+      简写:eg.transition:all 1s ease-in 1s;
+缺点：(1)只能定义开头和结束状态，不能定义中间状态(2)不能重复执行，除非再一次触发动画(3)需要在特定状态下才能触发
+animation(动画):(1)使用keyframes定义动画序列(2)配置动画执行名称、持续时间、动画曲线、延迟、执行次数、方向等
+      延迟时间：animation-delay: ;/动画名称（keyframes设置的名字）：animation-name: ;/设置持续时间:animation-duration: ;/执行曲线:animation-timing-function
+      动画执行的次数：animation-iteration-count: ;/动画执行方向:animation-direction: reverse;/动画最后停留的位置：animation-fill-mode: forwards;
+      简写属性:animation: name duration timing-function delay iteration-count direction fill-mode;
+      @keyframes规则:from相当于0% to相当于100%
+vertical-align属性:行盒(包裹所有内容)内容的对齐（给行内级的元素上面设置）
+               默认值：baseline基线对齐 其他值：top顶部对齐、middle行内级盒子的中心点与父盒基线加上x-height一半的线对齐、bottom底部对齐、
+               percentage提升或下降高度(距离相对于line-height计算\元素高度)0%等于baseline、length（盒子提升或下降一段距离）0cm等于baseline
+               vertical-align:不能用middle来进行居中
+!!!大部分的字体，都会文本下沉 
+解决图片下方空白的方法：1、设置top/middle/bottom 2、将图片设置成block元素
+额外知识补充：
+<!-- 1.字符实体：<实体不能被解析 （1）以&开头 以；分号结束（2)常用于显示保留字符（被解析成html代码）和不可见字符(如不换行空格)（3）代替其他难以用标准键盘录入的字符       
+                     描述 名称 编号
+       2.常见字符实体：< 小于号 &lt &#60
+                  > 大于号 &gt &#62
+                    空格 &nbsp &#160-->
+<!--URL VS URI
+       1. URL:统一资源定位符（网络地址） 域名在服务器中解析成ip地址 eg.daidu.com 解析-----&gt123.123.207.222
+       2. URI:统一资源标识符（标识web中逻辑或物理资源）
+       URL属于URI 但URI不一定是URL-->
+<!-- link元素（外部资源链接元素）规范了文档与外部资源的关系 属性：href（URL）,rel指定链接类型(icon站点图标 stylesheet:css样式)
+         1.通常在head元素中
+        2.链接样式表(css)
+        3.创建站点图表-->
+<!-- 进制在二进制中，10表示2
+      在八进制中，10表示8、
+      在十六进制中，a表示10
+      十进制转其他进制：整除，取余数-->
+<!-- 开发工具的补充：检查F12
+         调试字体大小：ctrl+ /ctrl加鼠标滚动
+          -->
+<!-- 使用box-sizing：
+             添加border-sizing:border就会算在width和height里面
+            生效时的前提：有明确的设置宽度和高度
+            不用使用box-sizing的场景：1.块级盒子的嵌套 2.定位元素 3.flex布局-->
+ <-- 
+      1.HTML5新增元素:
+            语义化元素：<header>头部元素 <nav>导航元素 <section>定义某个区域元素 <article>内容元素 <aside>侧边栏元素 <footer> 尾部元素
+      2.video/audio:视频/音频标签 controls(显示浏览器默认的控件) autoplay(自动播放) loop(循环播放) muted(静音) poster(视频加载前显示的图片) width(宽度) height(高度)
+            !!!在静音的情况下，浏览器允许自动播放
+            (1)vedio:用于在HTML页面中嵌入视频文件 支持的格式：mp4(webm ogg) 建议使用mp4格式
+            (2)audio:用于在HTML页面中嵌入音频文件 支持的格式：mp3(ogg wav) 建议使用mp3格式
+      3.input、全局属性data-*:自定义属性
+            input表单新增属性：placeholder(占位符) required(必填) pattern(正则表达式) maxlength(最大长度) min/max(数值范围) step(数值间隔) muliple(多选) autofocus(自动获取焦点)
+            input的type新增属性：email(电子邮件) url(网址) number(数字) range(范围) date(日期) color(颜色) tel(电话号码) search(搜索)
+            data-*全局属性：自定义属性 只能通过js获取，不能通过css获取 通常用于HTML和js之间传递数据
+      4.while-space:nowrap(让文本不换行显示) normal(默认换行) pre(保留空格和换行) pre-wrap(保留空格和换行，并且自动换行) pre-line(合并空格，保留换行符，并且自动换行) 
+      5.text-overflow文本超出(生效前提overflow不为visible):ellipsis(文本溢出显示省略号) clip(文本溢出部分被裁剪掉) hidden(文本溢出部分被隐藏)
+      6.css常见的函数扩展:calc()、attr()、var()、url()
+            (1)Var():定义和使用css变量 语法：--变量名:值; 使用var(变量名) var(变量名,默认值)
+            (2)Calc():计算属性值 语法：calc(表达式) + - * / ( ) 注意：加减乘除两边必须有空格 top:calc(100% - 50px);100%代表父元素的高度; 乘除不需要空格 width:calc(100%/3);
+            (3)Attr():获取元素的属性值 语法：attr(属性名)
+            (4)Url():引入外部资源 语法:url(路径)
+            (5)blur():高斯模糊效果 语法：blur(radius半径) 半径越大，模糊程度越高 eg:filter元素本身添加模糊效果:blur(5px); backdrop-filter给元素后面的内容应用(先要给元素设置背景颜色):blur(5px);
+            (6)gradient():颜色渐变效果 线性渐变linear-gradient(方向,颜色1,颜色2,颜色3)eg:to right top从左下角到右上角/45dege 45度 
+              径向渐变radial-gradient(形状 大小 位置,颜色1,颜色2)eg:at center(原点位置) circle(形状) closest-side(大小)
+      7.理解浏览器前缀
+            (1)定义：浏览器前缀是浏览器厂商为了支持某些新特性而添加的私有标识符 
+            (2)常见的浏览器前缀：-webkit-（谷歌、苹果） -moz-（火狐） -o-、-xv-（欧朋） -ms-（微软）
+            (3)使用场景：css3新增的属性和函数
+            (4)注意事项：1.尽量使用标准属性 2.浏览器前缀放在标准属性前面 3.不要滥用浏览器前缀
+            (5)自动添加浏览器前缀的网站：http://autoprefixer.github.io/
+            (6)常见的需要添加浏览器前缀的属性和函数：border-radius(圆角) box-shadow(盒子阴影) transform(形变) transition(过渡动画) animation(动画)
+              flexbox(flex布局) gradient(渐变颜色) user-select(用户选择文本)
+      8.深入理解BFC(块级格式化上下文)：
+            (1)定义：BFC是一个独立的渲染区域，区域内的元素不会影响区域外的元素
+            (2)触发BFC的条件：float不为none;position为absolute或fixed;display为inline-block、table-cell、table-caption、flex、inline-flex;overflow不为visible
+            (3)BFC的特性：1.清除内部浮动 2.阻止margin传递 3.包含浮动元素 4.避免文字环绕 5.计算高度时不考虑浮动元素
+            (4)在BFC中,box会在垂直方向上一个挨一个排布;垂直方向的间距由margin属性决定;在同一个BFC中，相邻两个box之间的margin会发生折叠;在BFC中，每个元素的左边缘是紧挨着包含块的左边缘的
+            (5)BFC应用场景：1、解决层叠问题 2、清除内部浮动(父元素触发BFC,形成独立的块级格式化上下文并且父元素高度auto) 3、阻止margin传递 4、包含浮动元素 5、避免文字环绕 6、计算高度时不考虑浮动元素
+      9.媒体查询:提供给开发者针对不同设备需求进行定制化开发的一个接口
+            (1)语法：@media 媒体类型 and (条件){css代码} eg：@media screen and (min-width:600px){body{background-color:orange;}}在宽度大于600px时，背景颜色变为橙色
+                    link元素中使用：<link rel="stylesheet" href="styles.css" media="screen and (min-width:600px)">
+            (2)常见的媒体类型：all(所有设备) screen(电脑、手机、平板等屏幕设备) print(打印机) speech(读屏软件)
+            (3)常见的条件：width/height(宽度/高度) min-width/max-width(最小/最大宽度) orientation(方向 landscape横向 portrait纵向)
+            (4)常见的应用场景：响应式布局
+            (5)响应式布局的实现方式：1.流式布局 2.弹性布局 3.栅格布局 4.移动优先设计(先设计移动端，再设计PC端)
+            (6)响应式布局的实现步骤：1.设计移动端 2.使用媒体查询设计PC端
+            -->
+<--额外补充知识
+CSS中常见的单位：
+            1.绝对长度单位：px(像素)         了解：in(英寸) cm(厘米) mm(毫米) pt(磅 1/72英寸) pc(派卡 1/6英寸)
+            2.相对长度单位：em(相对于父元素字体大小) rem(相对于根元素html字体font-size大小) vw:viewport width(相对于视口宽度的1%)  vh(相对于视口高度的1%)  
+            % (相对于父元素的某个属性) vmin(视口宽度和高度中较小的那个1%) vmax(视口宽度和高度中较大的那个1%)
+深入理解pixel、DPR、PPI:
+            1.pixel(像素)：是屏幕上显示图像的最小单位 1px不等于1个物理像素
+            2.DPR(device pixel ratio):设备像素比 物理像素和css像素的比例 DPR=物理像素/css像素
+            3.PPI(pixel per inch):每英寸像素数 屏幕的清晰度 PPI=物理像素/屏幕尺寸(英寸)
+            4.常见的屏幕PPI：PC显示器一般为96ppi;视网膜屏幕Retina一般为220ppi;手机屏幕一般为300ppi
+            5.常见的DPR：PC显示器一般为1;视网膜屏幕一般为2;手机屏幕一般为2或3
+CSS预处理器Less/Scss：
+            1.定义：CSS预处理器是一种扩展了CSS功能的脚本语言，可以让开发者使用变量、嵌套、函数等编程概念来编写CSS代码
+            2.优点：1.提高代码的可维护性 2.减少代码的重复 3.增强代码的可读性 4.支持模块化开发
+            3.缺点：1.需要编译成标准的CSS代码 2.增加了项目的复杂度 3.需要学习新的语法和概念
+            4.常见的CSS预处理器：Less(基于JavaScript) Scss(基于Ruby) Stylus(基于Node.js)
+            5.常见的功能：变量(定义和使用变量) 嵌套(嵌套选择器) 混入(定义和使用混入) 继承(继承其他选择器的样式) 运算(数学运算) 函数(内置函数和自定义函数)
+            6.将less转化为css的网站为http://cdn.jsdelivr.net/npm/less@4
+            7.将scss转化为css的网站为https://jsonformatter.org/scss-to-css
+浏览器视口Viewport：视口(viewport) 浏览器中用于显示网页内容的区域 移动端视口宽度一般为980px
+      1.视口的概念：视口是浏览器中用于显示网页内容的区域，通常情况下，视口的宽度等于浏览器窗口的宽度
+      2.视口的类型：布局视口(浏览器用来布局网页内容的区域) 可视视口(用户实际看到的网页内容区域) 理想视口(开发者希望用户看到的网页内容区域)
+      3.视口的测量单位：px(像素) vw(视口宽度的1%) vh(视口高度的1%)
+移动端适配方案：1.使用meta标签设置视口宽度<meta name="viewport" content="width=device-width, initial-scale=1.0">
+              2.使用媒体查询针对不同屏幕尺寸编写不同的css代码 @media screen and (max-width:600px){body{background-color:orange;}}
+              3.使用相对单位如rem、vw等进行布局
+移动端适配rem方案： 1.在html元素中设置font-size:62.5%(10px) 2.在其他元素中使用rem单位进行布局(1rem=10px) //rem相对于根元素html字体font-size大小
+                  优点：兼容性好，简单易用 缺点：需要设置html字体大小，不能根据屏幕宽度进行缩放    
+移动端适配vw方案：：1.vw是相对于视口宽度的百分比单位 1vw=视口宽度的1% 2.在所有元素中使用vw单位进行布局
+                        优点：不需要设置html字体大小，可以根据屏幕宽度进行缩放 缺点：兼容性差，不能精确控制字体大小
+计算vw的值：1.1vw=3.75px 2.less/scss函数 3.利用vscode中的插件 4.postcss-px-to-viewport-8-plugin插件
+           !总结：rem方案适合大部分场景 vw方案适合需要根据屏幕宽度进行缩放的场景
+动态修改rem中font-size的值：1.使用媒体查询 2.使用JavaScript 3.使用lib_flexible库（github上面）
+认识grid布局(了解):是一种基于二维的布局系统,存在兼容性问题
+      -->
+*/ 

@@ -1,0 +1,260 @@
+/* 
+   1.编程:命令式编程和声明式编程
+    命令式编程: 关注的是"如何"实现某个功能, 比如: 操作DOM, 处理事件, 发送请求等
+    声明式编程: 关注的是"什么"要实现, 比如: 使用React, Vue等框架, 只需要描述最终的结果, 而不需要关注实现细节
+   2.JavaScript中函数的this指向
+    (1)this绑定规则:在运行时, 根据调用方式的不同, 动态绑定this指向
+       (a)默认绑定: 独立函数调用, this指向全局对象(浏览器中是window, Node.js中是global)
+         在严格模式下,独立调用的函数中,this指向undefined
+       (b)隐式绑定: 函数作为对象的方法调用, this指向该对象
+       !(c)显式绑定: 使用call, apply, bind方法调用函数, 手动指定this指向
+          apply: 第一个参数为:绑定this 第二个参数为:数组,数组中的元素为函数的参数
+          call: 第一个参数为:绑定this 后面的参数为:函数的参数
+          bind: 第一个参数为:绑定this 后面的参数为:函数的参数
+          bind: 与call, apply不同的是, bind方法不会立即调用函数, 而是返回一个新的函数, 新函数的this指向绑定的对象
+       (d)new绑定: 使用new关键字调用函数, this指向新创建的对象
+       !(e)优先级: new绑定 > 显式绑定(bind>apply/call) > 隐式绑定 > 默认绑定
+    (2)内置函数的绑定: 某些内置函数的this指向也会发生改变, 比如: setTimeout, setInterval, addEventListener等
+        (a)调用内置函数时, this指向全局对象(浏览器中是window, Node.js中是global)
+        (b)监听事件时, this指向事件绑定的元素
+    (3)箭头函数: 箭头函数没有自己的this 它的this指向定义时所在的作用域的this
+        (a)不能作为构造函数使用 (不能使用new关键字调用)
+        (b)没有arguments对象
+        (c)不能使用call, apply, bind方法改变this指向
+        (d)编写方式: (参数) => {函数体}
+        (e)简写方式:
+           参数只有一个时, 可以省略括号()
+           函数体只有一条语句时, 可以省略大括号{}和return关键字
+           只有一行代码时,这行代码的表达式结果会作为函数的返回值默认返回
+           如果默认返回值是一个对象.那么这个对象必须加()
+         eg:箭头函数实现nums的所有偶数平方的和
+          var nums = [10,15,20,25,30]
+          var sum = nums.filter(item => item % 2 == 0)
+                        .map(item => item * item)
+                        .reduce((pre,cur) => pre + cur)
+                        console.log(sum);//1400
+        (f)箭头函数中this的应用场景:
+           解决回调函数中this指向问题
+           在类的方法中使用箭头函数, 保持this指向类的实例
+      !3.深入浏览器的渲染原理
+         (1)网页的解析过程
+           (a)输入URL->域名解析->DNS解析->index.html文件请求->服务器响应->浏览器接收HTML文档
+           说明: 浏览器接收到HTML文档后, 会根据文档中的资源链接, 发送请求下载相关资源(如CSS, JS, 图片等)
+           资源下载是并行进行的, 浏览器会同时发送多个请求, 提高页面加载速度
+         (2)浏览器的渲染过程
+           (a)解析HTML, 构建DOM树
+           (b)解析CSS, 构建CSSOM树
+           (c)将DOM树和CSSOM树结合, 构建渲染树
+           (d)布局(回流): 计算每个节点的几何信息(位置和大小)
+           (e)绘制(重绘): 将节点绘制到屏幕上   默认情况下,标准流会被合成在同一个图层上
+           说明: 浏览器在解析HTML和CSS时, 会遇到阻塞资源(如外部CSS文件和同步JS文件), 这些资源会阻塞后续的解析过程, 直到资源下载并解析完成
+            css文件是渲染阻塞资源, js文件是解析阻塞资源,但link标签引入的css文件不会阻塞html的解析, 但会阻塞渲染过程         
+           解决方法: 使用异步加载的方式加载资源, 如使用defer和async属性加载JS文件, 使用媒体查询(media query)加载CSS文件等
+         (3)回流和重绘:
+           (a)回流(重排): 当渲染树中的某个节点的几何信息发生改变时, 会触发回流(节点的大小和位置发生变化)
+                引发回流的情况:
+                   修改元素的几何属性(如width, height, margin, padding, border等)
+                   添加或删除可见的DOM节点
+                   修改字体大小或字体类型
+                   浏览器窗口大小变化
+                   元素内容变化(如文本内容增加或减少)
+                   一般调用某些会强制浏览器计算布局的方法(如offsetWidth, offsetHeight, getComputedStyle等)
+           (b)重绘: 当渲染树中的某个节点的外观发生改变时, 会触发重绘(节点的外观发生变化, 如颜色, 可见性等)
+                引发重绘的情况:
+                  修改元素的颜色(如color, background-color, border-color等)
+                  修改元素的可见性(如visibility, display等)
+                  修改文本样式(如font-size, font-family, font-weight等)
+         (4)页面合成的图层:(在layers中查看图层)
+             (a)标准流: 没有设置position属性的元素, 会被合成在同一个图层上
+             (b)定位流: 设置了position属性的元素, 会被合成在不同的图层上
+                 position: absolute, fixed, sticky
+             (c)修改图层属性: 使用CSS3的一些属性, 可以将元素提升到独立的图层上
+                 transform(3d时才能修改)/opacity/filter/will-change/backface-visibility
+             说明: 提升图层可以减少回流和重绘的范围, 提高页面渲染性能
+         (5)script元素的位置对渲染的影响:(script遇到DOM解析会阻塞HTML的解析和渲染 )
+             (a)head中引入script: 会阻塞HTML的解析和渲染, 直到脚本下载并执行完成
+             (b)body底部引入script: 可以避免阻塞HTML的解析和渲染, 提高页面加载速度
+             解决方法:(c)使用defer或async属性引入script: 可以异步加载脚本, 避免阻塞HTML的解析和渲染
+             defer和async属性:
+                 (1)defer属性(仅适用于外部脚本): 脚本会在HTML解析完成后, 在DOMContentLoaded事件触发前执行, 保持脚本的执行顺序
+                  多个defer脚本会按照它们在文档中出现的顺序执行
+             !建议:带defer的脚本放在head中, 保证脚本在DOMContentLoaded事件触发前执行
+                 (2)async属性(仅适用于外部脚本): 脚本会在下载完成后立即执行, 不保证脚本的执行顺序,完全独立于HTML解析过程
+                  多个async脚本的执行顺序是不确定的, 取决于它的下载速度和执行时间
+            !(e)渲染内容的优化:
+                 使用defer或async属性引入脚本
+                 将脚本放在body底部
+                 使用内联脚本时, 将脚本放在DOMContentLoaded事件中执行
+         (6)合成和性能优化
+             (a)合成: 将渲染树分成多个图层, 每个图层单独绘制, 最后合成到一起
+             (b)性能优化:
+               减少DOM操作
+               使用文档碎片(Document Fragment)
+               批量修改样式
+               使用CSS3硬件加速属性
+               避免频繁触发回流和重绘
+      !4.js运行原理:
+         (1)js引擎: 负责解析和执行js代码的程序, 浏览器中常用的js引擎有: V8, SpiderMonkey等
+             v8引擎: 谷歌浏览器和Node.js使用的js引擎, 由C++编写, 性能优异
+                     v8可以独立运行,也可以嵌入到任何c++程序中, 如Node.js就是基于v8引擎构建的
+          (2)VO(Variable Object): 变量对象, 用于存储函数中定义的变量和函数声明
+            GO(Global Object): 全局对象, 用于存储全局变量和函数
+            AO(Activation Object): 激活对象, 用于存储函数执行时的变量和参数
+       5.变量查找作用域
+         (1)作用域: 变量和函数的可访问范围
+             (a)全局作用域: 在代码的任何地方都可以访问
+             (b)函数作用域: 在函数内部定义的变量, 只能在函数内部访问
+             (c)块级作用域: 使用let和const定义的变量, 只能在块级作用域内访问(如if, for等代码块)
+         (2)作用域链: 当访问一个变量时, 引擎会先在当前作用域查找, 如果找不到, 会沿着作用域链向上查找, 直到找到该变量或到达全局作用域
+       6.js内存管理
+          现在大部分语言都是自动管理内存, 不需要程序员手动分配和释放内存
+       7.垃圾回收机制GC: js引擎会自动回收不再使用的内存, 防止内存泄漏
+         不在使用的内存: 变量不再被引用时, 该变量占用的内存就可以被回收
+         垃圾回收算法GC:
+             (a)标记-清除算法: 标记所有不再使用的变量, 然后清除它们占用的内存
+               设置根对象(全局对象和当前执行上下文的变量对象), 从根对象开始遍历所有引用的变量, 标记所有可达的变量, 未被标记的变量就是不再使用的变量, 可以被回收
+             说明: 标记-清除算法可以处理大部分的内存回收问题, 但在处理循环引用时会出现问题
+             例如: 对象A引用对象B, 对象B引用对象A, 如果没有其他变量引用这两个对象, 则根据引用计数算法, 这两个对象的引用计数器都为1, 不会被回收
+             (b)引用计数算法: 每个变量都有一个引用计数器, 当变量被引用时, 计数器加1, 当变量不再被引用时, 计数器减1, 当计数器为0时, 该变量就可以被回收 
+                弊端: 无法处理循环引用的问题    
+     !8.闭包Closure: 函数可以访问其外部作用域的变量, 即使外部函数已经执行完毕
+         (1)闭包的定义:从广义的角度来看,JavaScript都是闭包, 因为JavaScript中的函数都可以访问其外部作用域的变量
+                      从狭义的角度来看,JavaScript中一个函数,如果访问了外层作用域的变量,那么这个函数就形成了闭包
+         (2)闭包可以用来实现数据的私有化, 防止外部代码直接访问和修改变量
+         (3)闭包的作用:
+                  保护变量不被外部访问和修改
+                  延长变量的生命周期, 防止被垃圾回收机制回收
+                  实现函数工厂, 动态创建函数
+         (4)闭包的内存泄露:对于一个函数,如果它访问了外层作用域的变量,那么这个变量就会被保存在内存中, 直到函数执行完毕
+             说明: 闭包的内存泄露问题主要是由于闭包引用了外层作用域的变量, 而这些变量在闭包执行完毕后, 仍然被引用, 导致内存无法被回收
+             解决方法: 及时释放不再需要的闭包, 可以将闭包赋值为null, 触发垃圾回收机制
+      9.函数属性和arguments
+         (1)name属性: 函数的名称, 可以通过函数名.name访问
+         (2)length属性: 函数的形参个数, 可以通过函数名.length访问
+         (3)arguments对象: 函数内部的一个类数组对象, 包含传递给函数的所有实参
+              (a)arguments.callee: 指向当前函数本身(严格模式下不可用)
+              (b)arguments.length: 实参的个数
+              (c)arguments[i]: 访问第i个实参,通过索引获取内容 可以通过for循环或者filter方法遍历arguments对象
+              说明: 在ES6中, 推荐使用剩余参数(...args)代替arguments对象, 因为剩余参数是一个真正的数组, 可以使用数组的方法
+              (d)将arguments转成数组:
+                   Array.prototype.slice.call(arguments)  slice方法
+                   Array.from(arguments)  from方法
+                   [...arguments]  扩展运算符
+              (e)箭头函数不绑定arguments
+         (4)函数的剩余(rest)参数,是一个真正的数组, 用于接收函数的多余参数
+              (a)定义方式: function fn(...args) {}
+              (b)args是一个数组, 包含传递给函数的所有实参
+              (c)rest参数必须是函数的最后一个参数
+         (5)纯函数: 函数的返回值只依赖于其参数, 不依赖于任何外部状态
+               (a)相同的输入, 永远会得到相同的输出
+               (b)不修改函数外部的状态, 如全局变量, 外部对象等
+               (c)副作用: 函数执行过程中, 除了返回值, 还对外部环境产生了影响, 如修改全局变量, 外部对象等
+               (d)作用优势:不需要关心外部状态的变化, 更容易理解和测试,确定的输入得到确定的输出
+          (6)柯里化: 将一个多参数函数, 转换为多个单参数函数, 每个函数都只处理一个参数
+               (a)定义方式: function foo(x){
+                          return function(y){
+                                  return function(z){
+                              console.log(x + y - z);
+                                }
+                             }
+                         }
+               (b)应用场景: 提前固定某些参数, 创建更具体的函数; 实现函数的部分应用; 提高代码的复用性
+               (c)自动柯里化: //封装函数:自动转化柯里化过程
+                      function hyCurrying(fn) {
+                       function curryFn(...args) {
+                        第一类操作:继续返回一个新的函数,继续接收参数
+                        第二类操作:直接执行fn函数
+                       if (args.length >= fn.length){
+                         执行第二类
+                              return  fn(...args)
+                                    }else {  执行第一类
+                           return function(...newArgs) {
+                         return curryFn(...args.concat(newArgs)) }}}
+                          return curryFn}
+         (7)对象的增强
+              (a)Object.defineProperty()直接在对象上定义一个新的属性,或者修改现有的属性,并返回此对
+              (b)属性描述符: 数据属性 configurable(默认值是false): , 判断是否可以删除属性或者修改它的特性或者能否修改成存取属性描述符
+                                     writable: 是否可以写入(只读) 判断是否可以修改属性的值
+                                     enumerable: 是否可以枚举 表示属性是否可以通过for-in或者Object.key()返回属性
+                                     value: 返回属性的值
+                            存取属性  get[]: 当访问属性时, 调用get函数, 返回属性的值 默认值是undefined
+                                     set[]: 当设置属性时, 调用set函数, 并将新值作为参数传递 默认值是undefined
+              (c)同时定义多个属性描述符: Object.defineProperties()  
+              (d)getOwnPropertyDescriptor(): 返回指定对象上一个自有属性对应的属性描述符
+                 setOwnPropertyDescriptor(): 直接在对象上定义一个新的属性,或者修改现有的属性,并返回此对象
+                 preventExtensions(): 防止对象扩展, 即不能添加新的属性, 但是可以修改已有的属性
+                 seal(): 封闭对象, 即不能添加新的属性, 也不能删除已有的属性, 但是可以修改已有的属性
+                 freeze(): 冻结对象, 即不能添加新的属性, 也不能删除已有的属性, 也不能修改已有的属性...mmkk
+        10.组合函数: 将多个函数组合在一起, 形成一个新的函数, 新函数的参数是前一个函数的返回值, 新函数的返回值是最后一个函数的返回值
+         
+        11.严格模式: 一种运行模式, 可以在代码的顶部添加"use strict"指令, 开启严格模式
+                限制:不会意外创建全局变量  发现静默错误  不能使用delete删除 参数的名称不能相同
+                     不能以0开头 eval函数在严格模式下不可以引用外层函数
+        12.对象和函数的原型:Prototype:只要是对象, 就有原型
+              获取原型:隐式原型:对象名.__proto__      Object.getPrototypeOf(对象名)标准方法
+                       显式原型:函数名.prototype
+              对象中原型的作用:当通过[get]方式获取一个属性对应的value
+                    1.如果对象本身有这个属性, 则返回对象本身的属性值
+                    2.如果对象本身没有这个属性, 则去原型链上查找, 找到就返回, 找不到就返回undefined  
+              函数中原型的作用:隐式原型:当多个对象拥有共同的值时,可以将它放到构造函数对象的显式原型上
+                                      由构造原型创建出来的所有对象,都可以共享这些属性
+                              显式原型:constructor属性指向构造函数本身
+              重写原型对象: 可以将构造函数的显式原型指向一个新的对象, 从而改变对象的原型链
+        !13.继承: 子类可以继承父类的属性和方法 减少重复代码
+              JavaScript只支持单继承,不支持多继承
+                (a)原型链: 子类的原型指向父类的实例, 从而实现继承
+                (b)Object原型: 所有的对象都有Object.prototype, 它是所有对象的原型链的终点
+                (c)通过原型链实现继承: 子类的实例可以访问父类的属性和方法
+                    原型链的弊端: 1.子类的实例可以访问父类的属性和方法, 但是不能访问父类的私有属性和方法
+                                 2.子类的实例可以修改父类的属性和方法, 但是不能修改父类的私有属性和方法
+                                 3.子类的实例可以调用父类的方法, 但是不能调用父类的私有方法
+                (d)借用构造函数继承:steal()方法, 子类的实例可以调用父类的构造函数, 从而实现继承
+                (e)原型式继承函数: Object.create()方法, 可以创建一个新对象, 并将新对象的原型指向指定的对象
+                     真实开发: function inherit(Subtype, Supertype) {
+                                  Subtype.prototype = Object.create(Supertype.prototype)
+                                  Object.defineProperty(Subtype.prototype, "constructor", {
+                                  enumerable :false,
+                                  configurable :true,
+                                  writable :true,
+                                   value :Subtype})
+                                                    }
+               (f)hasOwnProperty(): 判断对象是否有指定的属性, 不包括原型链上的属性
+               (g)isPrototypeOf(): 判断一个对象是否是另一个对象的原型链上的对象
+               (h)in操作符: 判断对象是否有指定的属性, 包括原型链上的属性 /
+                  for in遍历不只是自己对象上的内容,也包括原型对象上的内容
+               (i)instanceof操作符: 判断一个对象是否是一个类的实例
+        14.组合继承: 原型链继承+借用构造函数继承
+                     !真实开发: function inherit(Subtype, Supertype) {
+                                  Subtype.prototype = Object.create(Supertype.prototype)
+                                  Object.defineProperty(Subtype.prototype, "constructor", {
+                                  enumerable :false,
+                                  configurable :true,
+                                  writable :true,
+                                   value :Subtype})
+                                  Subtype.prototype.constructor = Subtype
+                                  Subtype.prototype.steal = Supertype
+                                  Subtype.prototype.steal()
+                                  delete Subtype.prototype.steal
+                                                    }
+        15.面向对象ES6: 在开发中会使用babel将ES6代码转成ES5代码, 从而在低版本的浏览器中运行
+           以下划线开头的属性, 是为了内部使用, 不应该被外部访问
+                (a)class关键字: 定义类, 类名首字母大写
+                (b)constructor方法: 构造函数, 用于创建和初始化类的实例
+                (c)extends关键字: 继承, 用于创建一个子类, 并继承父类的属性和方法
+                      避免重复代码: 子类可以继承父类的属性和方法, 而不需要重复定义
+                (d)super关键字: 调用父类的方法, 必须在子类的构造函数中调用
+                     调用父类的方法: super.方法名() super()
+                (e)static关键字: 定义静态方法, 可以直接通过类名调用, 不能通过实例调用
+                (f)getter和setter: 用于获取和设置对象的属性值
+                (g)Symbol.iterator: 用于定义对象的迭代器, 可以使用for of循环遍历对象
+                (h)Symbol.toStringTag: 用于定义对象的字符串标签, 可以使用Object.prototype.toString()方法获取对象的字符串标签
+                (i)Symbol.match: 用于定义对象的正则表达式匹配方法, 可以使用String.prototype.match()方法匹配字符串
+                (j)类的静态方法:静态方法可以直接通过类名调用, 不能通过实例调用
+                               直接在方法前面添加static关键字, 即可定义一个静态方法
+                               在静态方法中,this指向类本身 ,可以直接调用类的属性和方法
+                (k)继承中内置类: 可以继承内置类的属性和方法, 例如Array, Object等
+        编程:高内聚,低耦合
+        高内聚: 一个类或者一个函数, 只负责完成一个功能, 而不是完成多个功能
+        低耦合: 一个类或者一个函数, 不应该依赖于其他类或者函数, 而应该依赖于其他类或者函数的接口
+
+ */
